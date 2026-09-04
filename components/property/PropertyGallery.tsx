@@ -42,7 +42,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
 
   if (images.length === 0) {
     return (
-      <div className="flex aspect-[16/9] items-center justify-center rounded-[var(--radius-lg)] bg-surface-sunken text-sm text-ink-subtle">
+      <div className="flex aspect-[16/9] items-center justify-center rounded-[var(--radius-sm)] border border-line bg-surface-sunken text-sm text-ink-subtle">
         Für dieses Objekt liegen noch keine Bilder vor.
       </div>
     );
@@ -57,7 +57,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
         <button
           type="button"
           onClick={() => setLightbox(0)}
-          className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken sm:aspect-[16/11]"
+          className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken sm:aspect-[16/11]"
           aria-label="Bildergalerie öffnen"
         >
           <Image
@@ -68,7 +68,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
             sizes="(min-width: 1024px) 60vw, 100vw"
             className="object-cover transition-transform duration-700 [transition-timing-function:var(--ease-out-quint)] group-hover:scale-[1.03]"
           />
-          <span className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-primary-950/75 px-3.5 py-2 text-[0.8125rem] font-medium text-white backdrop-blur-sm">
+          <span className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/25 bg-primary-950/75 px-3.5 py-2 text-[0.8125rem] font-medium text-white backdrop-blur-sm">
             <IconCamera size={16} />
             {images.length} Bilder ansehen
           </span>
@@ -81,7 +81,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
                 key={image.id}
                 type="button"
                 onClick={() => setLightbox(i + 1)}
-                className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)] bg-surface-sunken sm:aspect-auto sm:h-full sm:min-h-0"
+                className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken sm:aspect-auto sm:h-full sm:min-h-0"
                 aria-label={`Bild ${i + 2} öffnen`}
               >
                 <Image
@@ -92,7 +92,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
                 {i === 1 && images.length > 3 ? (
-                  <span className="absolute inset-0 flex items-center justify-center bg-primary-950/55 text-[0.9375rem] font-medium text-white backdrop-blur-[1px]">
+                  <span className="absolute inset-0 flex items-center justify-center bg-primary-950/55 font-[family-name:var(--font-display)] text-[1.125rem] italic text-white backdrop-blur-[1px]">
                     +{images.length - 3} weitere
                   </span>
                 ) : null}
@@ -131,7 +131,7 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
               width={1600}
               height={1067}
               sizes="100vw"
-              className="max-h-full w-auto max-w-full rounded-[var(--radius-md)] object-contain"
+              className="max-h-full w-auto max-w-full rounded-[var(--radius-xs)] object-contain"
             />
             {images.length > 1 ? (
               <>
@@ -163,8 +163,8 @@ export function PropertyGallery({ images, title }: { images: GalleryImage[]; tit
                 onClick={() => setLightbox(i)}
                 aria-label={`Bild ${i + 1}`}
                 className={cn(
-                  "relative h-16 w-24 shrink-0 overflow-hidden rounded-[var(--radius-sm)] transition-all",
-                  i === lightbox ? "ring-2 ring-accent-400" : "opacity-50 hover:opacity-90",
+                  "relative h-16 w-24 shrink-0 overflow-hidden rounded-[var(--radius-xs)] transition-opacity",
+                  i === lightbox ? "ring-1 ring-accent-400" : "opacity-50 hover:opacity-90",
                 )}
               >
                 <Image src={image.url} alt="" fill sizes="96px" className="object-cover" />

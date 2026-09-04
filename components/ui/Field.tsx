@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { IconCheck, IconChevronDown } from "@/components/icons";
 
 const controlBase =
-  "w-full rounded-[var(--radius-md)] border bg-surface text-[0.9375rem] text-ink " +
+  "w-full rounded-[var(--radius-sm)] border bg-surface text-[0.9375rem] text-ink " +
   "placeholder:text-ink-subtle transition-colors duration-150 " +
-  "focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-600/15 " +
+  "focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 " +
   "disabled:bg-surface-muted disabled:text-ink-subtle";
 
 function FieldShell({
@@ -33,7 +33,7 @@ function FieldShell({
       {label ? (
         <label
           htmlFor={htmlFor}
-          className="text-[0.8125rem] font-medium text-ink-muted"
+          className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-muted"
         >
           {label}
           {required ? <span className="ml-0.5 text-accent-600">*</span> : null}
@@ -201,14 +201,14 @@ export function Checkbox({
           <input
             id={fieldId}
             type="checkbox"
-            className="peer absolute inset-0 h-full w-full cursor-pointer appearance-none rounded-[var(--radius-xs)] border border-line-strong bg-surface transition-colors checked:border-primary-800 checked:bg-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+            className="peer absolute inset-0 h-full w-full cursor-pointer appearance-none rounded-[var(--radius-xs)] border border-line-strong bg-surface transition-colors checked:border-primary-900 checked:bg-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             aria-invalid={error ? true : undefined}
             {...props}
           />
           <IconCheck
             size={12}
             strokeWidth={2.75}
-            className="pointer-events-none relative text-white opacity-0 transition-opacity peer-checked:opacity-100"
+            className="pointer-events-none relative text-ink-inverse opacity-0 transition-opacity peer-checked:opacity-100"
           />
         </span>
         <span className="text-[0.8125rem] leading-relaxed text-ink-muted">{label}</span>
@@ -244,19 +244,18 @@ export function OptionCard({
       onClick={onClick}
       aria-pressed={selected}
       className={cn(
-        "group relative flex w-full items-start gap-4 rounded-[var(--radius-lg)] border p-5 text-left transition-all duration-200",
-        "hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]",
+        "group relative flex w-full items-start gap-4 rounded-[var(--radius-sm)] border p-5 text-left transition-colors duration-200",
         selected
-          ? "border-primary-700 bg-primary-50/70 shadow-[var(--shadow-card)]"
-          : "border-line-strong bg-surface hover:border-primary-300",
+          ? "border-primary-900 bg-primary-50/70"
+          : "border-line-strong bg-surface hover:border-primary-900",
         className,
       )}
     >
       {icon ? (
         <span
           className={cn(
-            "flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] transition-colors",
-            selected ? "bg-primary-800 text-white" : "bg-surface-sunken text-primary-700",
+            "flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-colors",
+            selected ? "border-primary-900 bg-primary-900 text-ink-inverse" : "border-line-strong bg-transparent text-primary-700",
           )}
         >
           {icon}
@@ -271,7 +270,7 @@ export function OptionCard({
       <span
         className={cn(
           "absolute right-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border transition-all",
-          selected ? "border-primary-800 bg-primary-800 text-white" : "border-line-strong",
+          selected ? "border-primary-900 bg-primary-900 text-ink-inverse" : "border-line-strong",
         )}
       >
         <IconCheck

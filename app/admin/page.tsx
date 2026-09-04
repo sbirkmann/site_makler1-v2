@@ -67,10 +67,10 @@ export default async function AdminDashboardPage() {
           <Link
             key={label}
             href={href}
-            className="group flex flex-col gap-3 rounded-[var(--radius-lg)] border border-line bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
+            className="group flex flex-col gap-3 rounded-[var(--radius-lg)] border border-line bg-surface p-6 transition-colors hover:border-primary-900"
           >
             <span className="flex items-center justify-between">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-sm)] border border-line bg-surface-muted text-primary-700">
                 <Icon size={19} />
               </span>
               <IconArrowRight
@@ -78,7 +78,7 @@ export default async function AdminDashboardPage() {
                 className="text-ink-subtle transition-transform group-hover:translate-x-0.5"
               />
             </span>
-            <span className="font-[family-name:var(--font-display)] text-[2.25rem] font-semibold leading-none text-primary-900">
+            <span className="font-[family-name:var(--font-display)] text-[2.5rem] font-medium leading-none tracking-[-0.02em] text-primary-950">
               {value}
             </span>
             <span className="flex flex-col gap-1">
@@ -92,7 +92,7 @@ export default async function AdminDashboardPage() {
       {/* Letzte Aktivitaet */}
       <div className="grid gap-6 xl:grid-cols-3">
         <section className="rounded-[var(--radius-lg)] border border-line bg-surface">
-          <h2 className="border-b border-line px-6 py-4 text-[0.9375rem] font-medium text-primary-950">
+          <h2 className="heading-4 border-b border-line px-6 py-4 text-[1.125rem] text-primary-950">
             Letzte Leads
           </h2>
           <ul className="divide-y divide-line">
@@ -126,7 +126,7 @@ export default async function AdminDashboardPage() {
         </section>
 
         <section className="rounded-[var(--radius-lg)] border border-line bg-surface">
-          <h2 className="border-b border-line px-6 py-4 text-[0.9375rem] font-medium text-primary-950">
+          <h2 className="heading-4 border-b border-line px-6 py-4 text-[1.125rem] text-primary-950">
             Letzte Bewertungsanfragen
           </h2>
           <ul className="divide-y divide-line">
@@ -158,7 +158,7 @@ export default async function AdminDashboardPage() {
         </section>
 
         <section className="rounded-[var(--radius-lg)] border border-line bg-surface">
-          <h2 className="border-b border-line px-6 py-4 text-[0.9375rem] font-medium text-primary-950">
+          <h2 className="heading-4 border-b border-line px-6 py-4 text-[1.125rem] text-primary-950">
             Letzte Kontaktanfragen
           </h2>
           <ul className="divide-y divide-line">

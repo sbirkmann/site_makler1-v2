@@ -107,18 +107,17 @@ export function Header({ overlay: _overlay = false }: { overlay?: boolean }) {
             </nav>
 
             <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-              <ButtonLink
-                href="/immobilienbewertung"
-                size="md"
-                variant="outline"
-                className="hidden lg:inline-flex"
-              >
-                Immobilie bewerten
-              </ButtonLink>
+              <div className="hidden lg:block">
+                <ButtonLink href="/immobilienbewertung" size="md" variant="outline">
+                  Immobilie bewerten
+                </ButtonLink>
+              </div>
 
-              <ButtonLink href="/kontakt" size="md" variant="primary" className="shrink-0">
-                Kontakt
-              </ButtonLink>
+              <div className="hidden shrink-0 sm:block">
+                <ButtonLink href="/kontakt" size="md" variant="primary">
+                  Kontakt
+                </ButtonLink>
+              </div>
 
               <button
                 type="button"

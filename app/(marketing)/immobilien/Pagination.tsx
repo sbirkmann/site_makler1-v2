@@ -19,7 +19,7 @@ export function Pagination({
   const visible = [...pages].filter((p) => p >= 1 && p <= pageCount).sort((a, b) => a - b);
 
   const linkClass =
-    "flex h-10 min-w-10 items-center justify-center rounded-[var(--radius-sm)] border px-3 text-[0.875rem] transition-colors";
+    "flex h-10 min-w-10 items-center justify-center rounded-full border px-3 text-[0.875rem] transition-colors";
 
   return (
     <nav aria-label="Seitennavigation" className="flex items-center justify-center gap-2">
@@ -28,7 +28,7 @@ export function Pagination({
           href={buildPropertyHref(searchParams, { seite: page - 1 })}
           rel="prev"
           aria-label="Vorherige Seite"
-          className={cn(linkClass, "border-line-strong text-ink-muted hover:border-primary-400 hover:text-primary-800")}
+          className={cn(linkClass, "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900")}
         >
           <IconChevronLeft size={17} />
         </Link>
@@ -46,8 +46,8 @@ export function Pagination({
               className={cn(
                 linkClass,
                 p === page
-                  ? "border-primary-800 bg-primary-800 font-medium text-white"
-                  : "border-line-strong text-ink-muted hover:border-primary-400 hover:text-primary-800",
+                  ? "border-primary-900 bg-primary-900 font-medium text-ink-inverse"
+                  : "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900",
               )}
             >
               {p}
@@ -61,7 +61,7 @@ export function Pagination({
           href={buildPropertyHref(searchParams, { seite: page + 1 })}
           rel="next"
           aria-label="Nächste Seite"
-          className={cn(linkClass, "border-line-strong text-ink-muted hover:border-primary-400 hover:text-primary-800")}
+          className={cn(linkClass, "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900")}
         >
           <IconChevronRight size={17} />
         </Link>

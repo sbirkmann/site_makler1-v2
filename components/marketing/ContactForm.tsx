@@ -126,7 +126,10 @@ export function ContactForm({ defaultSubject }: { defaultSubject?: string }) {
         label={
           <>
             Ich habe die{" "}
-            <Link href="/datenschutz" className="text-primary-800 underline underline-offset-2">
+            <Link
+              href="/datenschutz"
+              className="font-medium text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-[3px] hover:decoration-2"
+            >
               Datenschutzerklärung
             </Link>{" "}
             gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage

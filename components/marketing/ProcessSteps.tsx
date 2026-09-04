@@ -48,6 +48,10 @@ const steps = [
   },
 ];
 
+/**
+ * Ablauf v2: vertikale Zeitleiste. Der Marker traegt die Serifen-Ziffer
+ * in einem Hairline-Kreis, die Goldlinie waechst mit dem Scrollfortschritt.
+ */
 export function ProcessSteps() {
   const [active, setActive] = useState(0);
   const refs = useRef<(HTMLLIElement | null)[]>([]);
@@ -73,16 +77,15 @@ export function ProcessSteps() {
       {/* Verbindungslinie */}
       <span
         aria-hidden="true"
-        className="absolute left-[1.4375rem] top-4 bottom-4 w-px bg-line lg:left-1/2 lg:-translate-x-1/2"
+        className="absolute left-[1.4375rem] top-4 bottom-4 w-px bg-line-strong lg:left-1/2 lg:-translate-x-1/2"
       />
       <span
         aria-hidden="true"
-        className="absolute left-[1.4375rem] top-4 w-px bg-accent-400 transition-[height] duration-700 [transition-timing-function:var(--ease-out-quint)] lg:left-1/2 lg:-translate-x-1/2"
+        className="absolute left-[1.4375rem] top-4 w-px bg-accent-500 transition-[height] duration-700 [transition-timing-function:var(--ease-out-quint)] lg:left-1/2 lg:-translate-x-1/2"
         style={{ height: `${((active + 1) / steps.length) * 100}%`, maxHeight: "calc(100% - 2rem)" }}
       />
 
       {steps.map((step, i) => {
-        const Icon = step.icon;
         const isActive = i <= active;
         const alignRight = i % 2 === 1;
 
@@ -102,17 +105,17 @@ export function ProcessSteps() {
               {!alignRight ? <StepContent step={step} active={isActive} align="right" /> : null}
             </div>
 
-            {/* Marker */}
+            {/* Marker: Serifen-Ziffer im Hairline-Kreis */}
             <div className="relative flex justify-center lg:justify-center">
               <span
                 className={cn(
-                  "sticky top-1/2 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 bg-surface transition-all duration-500",
+                  "sticky top-1/2 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border bg-surface font-[family-name:var(--font-display)] text-[1.0625rem] leading-none tracking-[-0.01em] transition-colors duration-500",
                   isActive
-                    ? "border-accent-400 text-primary-800 shadow-[var(--shadow-card)]"
-                    : "border-line text-ink-subtle",
+                    ? "border-accent-500 text-primary-900"
+                    : "border-line-strong text-ink-subtle",
                 )}
               >
-                <Icon size={21} />
+                {step.number}
               </span>
             </div>
 
@@ -139,6 +142,7 @@ function StepContent({
   active: boolean;
   align: "left" | "right";
 }) {
+  const Icon = step.icon;
   return (
     <div
       className={cn(
@@ -149,15 +153,27 @@ function StepContent({
     >
       <span
         className={cn(
-          "font-[family-name:var(--font-display)] text-[2.25rem] leading-none tracking-[-0.02em] transition-colors duration-500",
-          active ? "text-accent-400" : "text-line-strong",
+          "inline-flex items-center gap-3",
+          align === "right" && "lg:flex-row-reverse",
         )}
       >
-        {step.number}
+        <span
+          className={cn(
+            "flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-500",
+            active ? "border-line bg-primary-50 text-primary-800" : "border-line text-ink-subtle",
+          )}
+        >
+          <Icon size={17} />
+        </span>
+        <span
+          aria-hidden="true"
+          className={cn(
+            "h-px w-8 transition-colors duration-500",
+            active ? "bg-accent-500" : "bg-line-strong",
+          )}
+        />
       </span>
-      <h3 className="mt-3 text-[1.25rem] font-medium leading-snug text-primary-950">
-        {step.title}
-      </h3>
+      <h3 className="heading-4 mt-4 text-primary-950">{step.title}</h3>
       <p
         className={cn(
           "mt-2.5 max-w-md text-[0.9375rem] leading-relaxed text-ink-muted",

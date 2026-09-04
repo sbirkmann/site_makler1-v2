@@ -208,18 +208,18 @@ export default async function PropertyDetailPage({
             <div className="max-w-3xl">
               <h1 className="page-title text-balance text-primary-950">{property.title}</h1>
               <p className="mt-4 flex items-center gap-2 text-[0.9375rem] text-ink-muted">
-                <IconLocation size={17} className="shrink-0 text-primary-500" />
+                <IconLocation size={17} className="shrink-0 text-primary-600" />
                 {[property.street, `${property.zipCode} ${property.city}`, property.region]
                   .filter(Boolean)
                   .join(" · ")}
               </p>
             </div>
 
-            <div className="shrink-0 lg:text-right">
+            <div className="shrink-0 border-t border-accent-500 pt-4 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0 lg:text-right">
               <p className="font-[family-name:var(--font-display)] text-[2.25rem] leading-none tracking-[-0.02em] text-primary-900">
                 {property.priceOnRequest ? "Auf Anfrage" : formatPrice(property.price)}
               </p>
-              <p className="mt-2 text-[0.8125rem] text-ink-subtle">
+              <p className="mt-2 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
                 {isRent ? "Kaltmiete monatlich" : "Kaufpreis"}
                 {isRent && property.serviceCharge
                   ? ` · zzgl. ${formatPrice(property.serviceCharge)} Nebenkosten`
@@ -259,13 +259,13 @@ export default async function PropertyDetailPage({
                 <Reveal>
                   <section>
                     <h2 className="heading-4 text-primary-950">Auf einen Blick</h2>
-                    <ul className="mt-5 flex flex-col gap-3">
+                    <ul className="mt-5 flex flex-col border-t border-line">
                       {property.highlights.map((highlight) => (
                         <li
                           key={highlight}
-                          className="flex items-start gap-3.5 rounded-[var(--radius-md)] border border-line bg-surface-muted px-4 py-3.5"
+                          className="flex items-start gap-3.5 border-b border-line py-3.5"
                         >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
+                          <span className="mt-2.5 h-px w-4 shrink-0 bg-accent-500" />
                           <span className="text-[0.9375rem] leading-relaxed text-ink">
                             {highlight}
                           </span>
@@ -317,9 +317,11 @@ export default async function PropertyDetailPage({
                         </p>
                       </>
                     ) : (
-                      <div className="mt-6 flex aspect-[16/7] items-center justify-center rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface-muted">
+                      <div className="mt-6 flex aspect-[16/7] items-center justify-center rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface-muted">
                         <div className="flex flex-col items-center gap-2 text-center">
-                          <IconLocation size={26} className="text-primary-400" />
+                          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-primary-700">
+                            <IconLocation size={20} />
+                          </span>
                           <p className="text-[0.875rem] font-medium text-ink-muted">
                             {property.zipCode} {property.city}
                             {property.region ? ` · ${property.region}` : ""}
@@ -341,14 +343,14 @@ export default async function PropertyDetailPage({
                       <IconEnergy size={22} className="text-accent-500" />
                       Energieinformationen
                     </h2>
-                    <dl className="mt-5 divide-y divide-line overflow-hidden rounded-[var(--radius-lg)] border border-line">
+                    <dl className="mt-5 divide-y divide-line border-y border-line">
                       {energyRows.map((row) => (
                         <div
                           key={row.label}
-                          className="flex items-center justify-between gap-6 px-5 py-4"
+                          className="flex items-center justify-between gap-6 py-4"
                         >
-                          <dt className="text-[0.9375rem] text-ink-muted">{row.label}</dt>
-                          <dd className="text-[0.9375rem] font-medium text-primary-950">
+                          <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-muted">{row.label}</dt>
+                          <dd className="font-[family-name:var(--font-display)] text-[1.0625rem] font-medium text-primary-950">
                             {row.value}
                           </dd>
                         </div>
@@ -368,11 +370,13 @@ export default async function PropertyDetailPage({
                 <Reveal>
                   <section>
                     <h2 className="heading-4 text-primary-950">Grundriss & Dokumente</h2>
-                    <ul className="mt-5 flex flex-col gap-3">
+                    <ul className="mt-5 flex flex-col border-t border-line">
                       {property.documents.map((doc) => (
                         <li key={doc.id}>
-                          <span className="flex items-center gap-4 rounded-[var(--radius-md)] border border-line px-5 py-4">
-                            <IconDocument size={20} className="shrink-0 text-primary-600" />
+                          <span className="flex items-center gap-4 border-b border-line py-4">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line-strong text-primary-700">
+                              <IconDocument size={18} />
+                            </span>
                             <span className="flex-1 text-[0.9375rem] text-ink">{doc.title}</span>
                             <span className="text-[0.75rem] uppercase tracking-[0.08em] text-ink-subtle">
                               nach Anfrage
@@ -392,10 +396,8 @@ export default async function PropertyDetailPage({
             {/* Seitenspalte: Ansprechpartner */}
             <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:self-start">
               {property.agent ? (
-                <div className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 shadow-[var(--shadow-card)]">
-                  <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary-500">
-                    Ihr Ansprechpartner
-                  </p>
+                <div className="rounded-[var(--radius-sm)] border border-line bg-surface p-6">
+                  <p className="eyebrow">Ihr Ansprechpartner</p>
                   <div className="mt-5 flex items-center gap-4">
                     {property.agent.imageUrl ? (
                       <Image
@@ -403,11 +405,11 @@ export default async function PropertyDetailPage({
                         alt={`${property.agent.firstName} ${property.agent.lastName}`}
                         width={72}
                         height={72}
-                        className="h-18 w-18 shrink-0 rounded-full object-cover"
+                        className="h-18 w-18 shrink-0 rounded-full border border-line-strong object-cover"
                       />
                     ) : null}
                     <div>
-                      <p className="text-[1.0625rem] font-medium text-primary-950">
+                      <p className="heading-4 text-primary-950">
                         {property.agent.firstName} {property.agent.lastName}
                       </p>
                       <p className="mt-1 text-[0.8125rem] leading-snug text-ink-muted">
@@ -422,7 +424,7 @@ export default async function PropertyDetailPage({
                         href={`tel:${property.agent.phone.replace(/\s/g, "")}`}
                         className="flex items-center gap-3 text-[0.875rem] text-ink-muted transition-colors hover:text-primary-800"
                       >
-                        <IconPhone size={17} className="shrink-0 text-primary-500" />
+                        <IconPhone size={17} className="shrink-0 text-primary-600" />
                         {property.agent.phone}
                       </a>
                     ) : null}
@@ -430,15 +432,16 @@ export default async function PropertyDetailPage({
                       href={`mailto:${property.agent.email}`}
                       className="flex items-center gap-3 break-all text-[0.875rem] text-ink-muted transition-colors hover:text-primary-800"
                     >
-                      <IconMail size={17} className="shrink-0 text-primary-500" />
+                      <IconMail size={17} className="shrink-0 text-primary-600" />
                       {property.agent.email}
                     </a>
                   </div>
                 </div>
               ) : null}
 
-              <div className="mt-6 rounded-[var(--radius-lg)] border border-line bg-surface-muted p-6">
-                <h2 className="heading-4 text-primary-950">Interesse an dieser Immobilie?</h2>
+              <div className="mt-6 rounded-[var(--radius-sm)] border border-line-strong bg-surface p-6">
+                <p className="eyebrow">Anfrage</p>
+                <h2 className="heading-4 mt-3 text-primary-950">Interesse an dieser Immobilie?</h2>
                 <p className="mt-3 text-[0.875rem] leading-relaxed text-ink-muted">
                   Schreiben Sie uns kurz – wir senden Ihnen das vollständige Exposé und stimmen
                   einen Besichtigungstermin ab.
@@ -455,7 +458,8 @@ export default async function PropertyDetailPage({
       {similar.length > 0 ? (
         <Section tone="muted">
           <Container size="wide">
-            <h2 className="display-2 text-primary-950">Ähnliche Immobilien</h2>
+            <span className="eyebrow">Weitere Objekte</span>
+            <h2 className="display-2 mt-4 text-primary-950">Ähnliche Immobilien</h2>
             <PropertyGrid properties={similar} className="mt-8" priorityCount={0} />
           </Container>
         </Section>

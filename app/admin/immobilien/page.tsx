@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/services/auth";
 import { getAdminProperties } from "@/lib/repositories/admin";
@@ -99,14 +98,12 @@ export default async function AdminPropertiesPage() {
                         {marketingTypeLabels[p.marketingType]}
                       </span>
                     </td>
-                    <td className="whitespace-nowrap px-5 py-3.5 text-[0.875rem] text-primary-900">
+                    <td className="whitespace-nowrap px-5 py-3.5 font-[family-name:var(--font-display)] text-[1rem] text-primary-950">
                       {p.priceOnRequest ? "Auf Anfrage" : formatPrice(p.price)}
                     </td>
                     <td className="px-5 py-3.5">
                       <div className="flex flex-col items-start gap-1.5">
-                        <Badge
-                          tone={statusTone[p.status] === "success" ? "success" : "muted"}
-                        >
+                        <Badge tone={statusTone[p.status]}>
                           {statusLabels[p.status]}
                         </Badge>
                         {p.featured ? <Badge tone="accent">Empfehlung</Badge> : null}
@@ -119,13 +116,10 @@ export default async function AdminPropertiesPage() {
                       {formatDateShort(p.updatedAt)}
                     </td>
                     <td className="px-5 py-3.5 text-right">
-                      <Link
-                        href={`/admin/immobilien/${p.id}`}
-                        className="inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] border border-line-strong px-3 py-1.5 text-[0.8125rem] font-medium text-ink-muted transition-colors hover:border-primary-400 hover:text-primary-800"
-                      >
+                      <ButtonLink href={`/admin/immobilien/${p.id}`} variant="outline" size="sm">
                         <IconEdit size={15} />
                         Bearbeiten
-                      </Link>
+                      </ButtonLink>
                     </td>
                   </tr>
                 ))}

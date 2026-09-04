@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconStar } from "@/components/icons";
 
+/** Sterne v2: Safran-Gold auf Elfenbein, leere Sterne als Hairline. */
 export function RatingStars({
   rating,
   size = 16,
@@ -21,13 +22,13 @@ export function RatingStars({
             key={i}
             size={size}
             filled={i <= rounded}
-            strokeWidth={1.4}
-            className={i <= rounded ? "text-accent-400" : "text-line-strong"}
+            strokeWidth={1.2}
+            className={i <= rounded ? "text-accent-500" : "text-line-strong"}
           />
         ))}
       </span>
       {showValue ? (
-        <span className="text-[0.875rem] font-medium tabular-nums text-ink-muted">
+        <span className="font-[family-name:var(--font-display)] text-[0.9375rem] tabular-nums text-primary-900">
           {rating.toFixed(1).replace(".", ",")}
         </span>
       ) : null}

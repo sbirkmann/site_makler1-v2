@@ -407,8 +407,8 @@ export function ValuationFunnel({ variant }: { variant: FunnelVariant }) {
                         className={cn(
                           "rounded-full border px-4 py-2.5 text-[0.875rem] font-medium transition-all",
                           data.condition === c
-                            ? "border-primary-800 bg-primary-800 text-white"
-                            : "border-line-strong text-ink-muted hover:border-primary-300 hover:text-primary-800",
+                            ? "border-primary-900 bg-primary-900 text-ink-inverse"
+                            : "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900",
                         )}
                       >
                         {conditionLabels[c]}
@@ -497,7 +497,7 @@ export function ValuationFunnel({ variant }: { variant: FunnelVariant }) {
               Bitte prüfen Sie kurz – über &bdquo;Zurück&ldquo; können Sie jederzeit korrigieren.
             </p>
 
-            <dl className="mt-6 divide-y divide-line overflow-hidden rounded-[var(--radius-lg)] border border-line">
+            <dl className="mt-6 divide-y divide-line border-y border-line">
               <SummaryRow
                 label="Immobilientyp"
                 value={data.propertyType ? propertyTypeLabels[data.propertyType] : "–"}
@@ -592,7 +592,7 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-start justify-between gap-6 px-5 py-3.5">
       <dt className="text-[0.875rem] text-ink-muted">{label}</dt>
-      <dd className="text-right text-[0.875rem] font-medium text-primary-950">{value || "–"}</dd>
+      <dd className="text-right font-[family-name:var(--font-display)] text-[0.9375rem] font-medium text-primary-950">{value || "–"}</dd>
     </div>
   );
 }

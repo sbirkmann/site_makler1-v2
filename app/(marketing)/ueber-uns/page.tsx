@@ -60,7 +60,7 @@ export default async function AboutPage() {
             <Reveal>
               <span className="eyebrow">Über uns</span>
               <h1 className="page-title mt-4 text-balance text-primary-950">
-                Immobilien sind selten nur eine Frage des Preises.
+                Immobilien sind selten nur eine Frage <em className="font-normal italic text-accent-500">des Preises.</em>
               </h1>
               <div className="prose-editorial mt-6">
                 <p>
@@ -83,7 +83,7 @@ export default async function AboutPage() {
 
             <Reveal delay={120}>
               <div className="grid grid-cols-2 gap-4">
-                <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken">
                   <Image
                     src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
                     alt="Heller Wohnraum mit Blick in den Garten"
@@ -92,7 +92,7 @@ export default async function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="relative mt-10 aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken">
+                <div className="relative mt-10 aspect-[3/4] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken">
                   <Image
                     src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
                     alt="Besprechungssituation in hellen Büroräumen"
@@ -117,16 +117,25 @@ export default async function AboutPage() {
               description="Vier Grundsätze, die wir im Alltag tatsächlich anwenden – auch dann, wenn sie unbequem sind."
             />
           </Reveal>
-          <div className="mt-8 grid gap-px overflow-hidden rounded-[var(--radius-xl)] border border-line bg-line md:grid-cols-2">
+          <div className="mt-10 grid border-t border-line-strong md:grid-cols-2">
             {values.map((value, i) => {
               const Icon = value.icon;
               return (
-                <Reveal key={value.title} delay={(i % 2) * 90}>
-                  <div className="flex h-full flex-col gap-4 bg-surface p-7 sm:p-8">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700">
-                      <Icon size={22} />
+                <Reveal
+                  key={value.title}
+                  delay={(i % 2) * 90}
+                  className="border-b border-line md:[&:nth-child(odd)]:border-r"
+                >
+                  <div className="flex h-full flex-col gap-5 px-1 py-8 sm:px-8 sm:py-9">
+                    <span className="flex items-center justify-between">
+                      <span className="font-[family-name:var(--font-display)] text-[1.75rem] leading-none tracking-[-0.02em] text-accent-500">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-primary-700">
+                        <Icon size={20} />
+                      </span>
                     </span>
-                    <h3 className="text-[1.125rem] font-medium text-primary-950">{value.title}</h3>
+                    <h3 className="heading-4 text-primary-950">{value.title}</h3>
                     <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{value.text}</p>
                   </div>
                 </Reveal>
@@ -151,7 +160,7 @@ export default async function AboutPage() {
             {agents.map((agent, i) => (
               <Reveal key={agent.id} delay={(i % 4) * 80}>
                 <article className="flex h-full flex-col">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken">
                     {agent.imageUrl ? (
                       <Image
                         src={agent.imageUrl}
@@ -163,10 +172,10 @@ export default async function AboutPage() {
                     ) : null}
                   </div>
                   <div className="mt-5 flex flex-1 flex-col">
-                    <h3 className="text-[1.0625rem] font-medium text-primary-950">
+                    <h3 className="heading-4 text-primary-950">
                       {agent.firstName} {agent.lastName}
                     </h3>
-                    <p className="mt-1 text-[0.8125rem] leading-snug text-primary-600">
+                    <p className="mt-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-accent-600">
                       {agent.role}
                     </p>
                     {agent.bio ? (
@@ -180,7 +189,7 @@ export default async function AboutPage() {
                         {agent.focus.map((f) => (
                           <li
                             key={f}
-                            className="rounded-full bg-surface px-2.5 py-1 text-[0.6875rem] font-medium text-ink-muted"
+                            className="rounded-[var(--radius-xs)] border border-line-strong px-2 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-ink-muted"
                           >
                             {f}
                           </li>
@@ -227,7 +236,7 @@ export default async function AboutPage() {
           <ul className="mt-10 flex flex-wrap justify-center gap-3">
             {site.regions.map((region, i) => (
               <Reveal key={region} delay={i * 60}>
-                <li className="rounded-full border border-line bg-surface px-5 py-2.5 text-[0.9375rem] text-primary-900">
+                <li className="rounded-full border border-line-strong bg-surface px-5 py-2.5 font-[family-name:var(--font-display)] text-[1rem] text-primary-900">
                   {region}
                 </li>
               </Reveal>

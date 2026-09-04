@@ -50,7 +50,7 @@ export function PropertyInquiryForm({
       >
         <Link
           href="/immobilien"
-          className="text-[0.875rem] font-medium text-primary-800 underline-offset-4 hover:underline"
+          className="text-[0.875rem] font-medium text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-4 hover:decoration-2"
         >
           Weitere Immobilien ansehen
         </Link>
@@ -120,7 +120,7 @@ export function PropertyInquiryForm({
         label={
           <>
             Ich habe die{" "}
-            <Link href="/datenschutz" className="text-primary-800 underline underline-offset-2">
+            <Link href="/datenschutz" className="text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-2">
               Datenschutzerklärung
             </Link>{" "}
             gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage
@@ -131,7 +131,7 @@ export function PropertyInquiryForm({
 
       <SubmitButton />
 
-      <p className="text-center text-[0.75rem] text-ink-subtle">
+      <p className="text-center text-[0.6875rem] uppercase tracking-[0.12em] text-ink-subtle">
         Ihre Anfrage ist unverbindlich und kostenfrei.
       </p>
     </form>

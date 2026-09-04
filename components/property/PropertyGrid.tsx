@@ -40,14 +40,14 @@ export function PropertyGridSkeleton({ count = 6 }: { count?: number }) {
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface"
+          className="overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface"
         >
-          <div className="aspect-[4/3] animate-pulse bg-surface-sunken" />
+          <div className="aspect-[4/3] animate-pulse border-b border-line bg-surface-sunken" />
           <div className="flex flex-col gap-3 p-6">
-            <div className="h-3 w-20 animate-pulse rounded bg-surface-sunken" />
-            <div className="h-4 w-4/5 animate-pulse rounded bg-surface-sunken" />
-            <div className="h-3 w-full animate-pulse rounded bg-surface-sunken" />
-            <div className="mt-4 h-6 w-32 animate-pulse rounded bg-surface-sunken" />
+            <div className="h-3 w-28 animate-pulse rounded-[var(--radius-xs)] bg-surface-sunken" />
+            <div className="h-5 w-4/5 animate-pulse rounded-[var(--radius-xs)] bg-surface-sunken" />
+            <div className="h-3 w-full animate-pulse rounded-[var(--radius-xs)] bg-surface-sunken" />
+            <div className="mt-4 h-6 w-32 animate-pulse rounded-[var(--radius-xs)] border-t border-line bg-surface-sunken" />
           </div>
         </div>
       ))}
@@ -65,8 +65,8 @@ export function PropertyEmptyState({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center gap-5 rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface-muted px-6 py-16 text-center">
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-surface text-ink-subtle shadow-[var(--shadow-subtle)]">
+    <div className="flex flex-col items-center gap-5 rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface-muted px-6 py-16 text-center">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full border border-line-strong bg-surface text-primary-700">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
           <circle cx="10.6" cy="10.6" r="6.1" />
           <path d="m15.1 15.1 4.6 4.6M8.4 10.6h4.4" />

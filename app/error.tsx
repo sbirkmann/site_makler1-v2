@@ -17,7 +17,10 @@ export default function GlobalError({
 
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center bg-surface-muted px-5 py-20 text-center">
-      <h1 className="display-3 text-primary-950">Da ist etwas schiefgelaufen</h1>
+      <span aria-hidden="true" className="block h-px w-10 bg-accent-500" />
+      <h1 className="display-2 mt-6 text-primary-950">
+        Da ist etwas <em>schiefgelaufen</em>
+      </h1>
       <p className="lead mt-4 max-w-md">
         Die Seite konnte nicht vollständig geladen werden. Bitte versuchen Sie es erneut – oder
         rufen Sie uns an, wenn es weiterhin nicht funktioniert.
@@ -31,7 +34,9 @@ export default function GlobalError({
         </ButtonLink>
       </div>
       {error.digest ? (
-        <p className="mt-8 text-[0.75rem] text-ink-subtle">Referenz: {error.digest}</p>
+        <p className="mt-8 border-t border-line pt-4 text-[0.75rem] uppercase tracking-[0.1em] text-ink-subtle">
+          Referenz: {error.digest}
+        </p>
       ) : null}
     </div>
   );

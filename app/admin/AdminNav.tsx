@@ -18,22 +18,23 @@ export function AdminNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Verwaltungsnavigation" className="mx-auto max-w-[100rem] px-5 sm:px-8">
-      <ul className="hide-scrollbar -mb-px flex gap-1 overflow-x-auto">
+    <nav aria-label="Verwaltungsnavigation" className="mx-auto max-w-[100rem] border-t border-line px-5 sm:px-8">
+      <ul className="hide-scrollbar -mb-px flex gap-6 overflow-x-auto">
         {items.map(({ href, label, Icon, exact }) => {
           const active = exact ? pathname === href : pathname.startsWith(href);
           return (
             <li key={href}>
               <Link
                 href={href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-2 whitespace-nowrap border-b-2 px-3 py-3 text-[0.875rem] font-medium transition-colors",
+                  "flex items-center gap-2 whitespace-nowrap border-b-2 py-3 text-[0.875rem] font-medium transition-colors",
                   active
-                    ? "border-primary-800 text-primary-900"
-                    : "border-transparent text-ink-muted hover:text-primary-800",
+                    ? "border-accent-500 text-primary-950"
+                    : "border-transparent text-ink-muted hover:border-line-strong hover:text-primary-900",
                 )}
               >
-                <Icon size={17} />
+                <Icon size={16} className={active ? "text-accent-600" : "text-ink-subtle"} />
                 {label}
               </Link>
             </li>

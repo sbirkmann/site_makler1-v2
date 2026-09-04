@@ -19,15 +19,15 @@ export function FunnelProgress({
   return (
     <div className="flex min-w-0 flex-col gap-4">
       <div className="flex items-baseline justify-between gap-4">
-        <p className="text-[0.875rem] font-medium text-primary-900">
-          Schritt {current + 1} von {steps.length}
+        <p className="font-[family-name:var(--font-display)] text-[1.125rem] font-medium leading-none text-primary-950">
+          Schritt <span className="italic text-accent-500">{current + 1}</span> von {steps.length}
         </p>
-        <p className="text-[0.8125rem] text-ink-subtle">{steps[current]}</p>
+        <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">{steps[current]}</p>
       </div>
 
       {/* Fortschrittsbalken */}
       <div
-        className="h-1.5 w-full overflow-hidden rounded-full bg-surface-sunken"
+        className="h-px w-full overflow-hidden bg-line-strong"
         role="progressbar"
         aria-valuenow={current + 1}
         aria-valuemin={1}
@@ -35,7 +35,7 @@ export function FunnelProgress({
         aria-label="Fortschritt"
       >
         <div
-          className="h-full rounded-full bg-accent-400 transition-[width] duration-500 [transition-timing-function:var(--ease-out-quint)]"
+          className="h-full bg-accent-500 transition-[width] duration-500 [transition-timing-function:var(--ease-out-quint)]"
           style={{ width: `${percent}%` }}
         />
       </div>
@@ -53,11 +53,11 @@ export function FunnelProgress({
                 disabled={!reachable || !onStepClick}
                 onClick={() => onStepClick?.(i)}
                 className={cn(
-                  "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[0.6875rem] font-semibold transition-colors",
+                  "flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--radius-xs)] border font-[family-name:var(--font-display)] text-[0.75rem] font-medium transition-colors",
                   done
-                    ? "border-accent-400 bg-accent-400 text-white"
+                    ? "border-accent-500 bg-accent-500 text-ink"
                     : active
-                      ? "border-primary-800 bg-primary-800 text-white"
+                      ? "border-primary-900 bg-primary-900 text-ink-inverse"
                       : "border-line-strong text-ink-subtle",
                   reachable && onStepClick ? "cursor-pointer" : "cursor-default",
                 )}
@@ -68,7 +68,7 @@ export function FunnelProgress({
               <span
                 className={cn(
                   "truncate text-[0.75rem]",
-                  active ? "font-medium text-primary-900" : "text-ink-subtle",
+                  active ? "font-semibold text-primary-900" : done ? "text-ink-muted" : "text-ink-subtle",
                 )}
               >
                 {label}

@@ -160,17 +160,17 @@ export default async function RatgeberArticlePage({
           <Container size="narrow">
             <nav
               aria-label="Brotkrumen"
-              className="mb-6 flex flex-wrap items-center gap-2 text-[0.8125rem] text-ink-subtle"
+              className="mb-6 flex flex-wrap items-center gap-2 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink-subtle"
             >
-              <Link href="/" className="hover:text-primary-800">Start</Link>
-              <span aria-hidden="true">/</span>
-              <Link href="/ratgeber" className="hover:text-primary-800">Ratgeber</Link>
+              <Link href="/" className="hover:text-primary-900">Start</Link>
+              <span aria-hidden="true" className="text-accent-500">/</span>
+              <Link href="/ratgeber" className="hover:text-primary-900">Ratgeber</Link>
               {post.category ? (
                 <>
-                  <span aria-hidden="true">/</span>
+                  <span aria-hidden="true" className="text-accent-500">/</span>
                   <Link
                     href={`/ratgeber?kategorie=${post.category.slug}`}
-                    className="hover:text-primary-800"
+                    className="hover:text-primary-900"
                   >
                     {post.category.name}
                   </Link>
@@ -180,7 +180,7 @@ export default async function RatgeberArticlePage({
 
             <h1 className="page-title text-balance text-primary-950">{post.title}</h1>
 
-            <p className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.875rem] text-ink-subtle">
+            <p className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5 text-[0.875rem] text-ink-subtle">
               {post.author ? (
                 <span className="flex items-center gap-2.5">
                   {post.author.imageUrl ? (
@@ -189,7 +189,7 @@ export default async function RatgeberArticlePage({
                       alt=""
                       width={32}
                       height={32}
-                      className="h-8 w-8 rounded-full object-cover"
+                      className="h-8 w-8 rounded-full border border-line object-cover"
                     />
                   ) : null}
                   <span className="text-ink-muted">
@@ -209,7 +209,7 @@ export default async function RatgeberArticlePage({
         {post.coverImage ? (
           <Section className="py-8">
             <Container size="wide">
-              <div className="relative aspect-[16/8] overflow-hidden rounded-[var(--radius-xl)] bg-surface-sunken">
+              <div className="relative aspect-[16/8] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken">
                 <Image
                   src={post.coverImage}
                   alt=""
@@ -225,7 +225,9 @@ export default async function RatgeberArticlePage({
 
         <Section className="pt-8">
           <Container size="narrow">
-            <p className="lead border-l-2 border-accent-400 pl-5">{post.excerpt}</p>
+            <p className="lead border-l-2 border-accent-500 pl-5 font-[family-name:var(--font-display)] text-[1.25rem] italic text-primary-800">
+              {post.excerpt}
+            </p>
             <div className="prose-editorial mt-10">{renderContent(post.content)}</div>
           </Container>
         </Section>
@@ -234,6 +236,7 @@ export default async function RatgeberArticlePage({
       {related.length > 0 ? (
         <Section tone="muted">
           <Container size="wide">
+            <span aria-hidden="true" className="mb-5 block h-px w-8 bg-accent-500" />
             <h2 className="display-2 text-primary-950">Weiterlesen</h2>
             <div className="mt-8 grid gap-8 md:grid-cols-3">
               {related.map((item, i) => (
@@ -241,7 +244,7 @@ export default async function RatgeberArticlePage({
                   <article className="group flex h-full flex-col">
                     <Link
                       href={`/ratgeber/${item.slug}`}
-                      className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken"
+                      className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken"
                     >
                       {item.coverImage ? (
                         <Image
@@ -253,12 +256,15 @@ export default async function RatgeberArticlePage({
                         />
                       ) : null}
                     </Link>
-                    <div className="mt-5">
-                      <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary-500">
+                    <div className="mt-5 border-t border-line pt-4">
+                      <p className="eyebrow !text-[0.6875rem] !tracking-[0.14em] [&::before]:w-4">
                         {item.category?.name ?? "Ratgeber"}
                       </p>
-                      <h3 className="mt-2.5 text-[1.0625rem] font-medium leading-snug text-primary-950">
-                        <Link href={`/ratgeber/${item.slug}`} className="hover:text-primary-700">
+                      <h3 className="heading-4 mt-3 text-primary-950">
+                        <Link
+                          href={`/ratgeber/${item.slug}`}
+                          className="decoration-accent-500 decoration-1 underline-offset-4 hover:underline"
+                        >
                           {item.title}
                         </Link>
                       </h3>

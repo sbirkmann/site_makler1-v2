@@ -100,12 +100,12 @@ export default async function AdminRequestsPage({
             className={cn(
               "flex items-center gap-2 rounded-full border px-4 py-2 text-[0.875rem] font-medium transition-colors",
               active === t.id
-                ? "border-primary-800 bg-primary-800 text-white"
-                : "border-line-strong text-ink-muted hover:border-primary-400 hover:text-primary-800",
+                ? "border-primary-900 bg-primary-900 text-ink-inverse"
+                : "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900",
             )}
           >
             {t.label}
-            <span className="text-[0.75rem] opacity-70">{counts[t.id]}</span>
+            <span className="font-[family-name:var(--font-display)] text-[0.875rem] italic opacity-80">{counts[t.id]}</span>
           </Link>
         ))}
       </nav>
@@ -113,7 +113,7 @@ export default async function AdminRequestsPage({
       {active === "leads" ? (
         <ul className="flex flex-col gap-4">
           {leads.length === 0 ? (
-            <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
+            <p className="rounded-[var(--radius-lg)] border border-line bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
               Noch keine Leads eingegangen.
             </p>
           ) : (
@@ -121,7 +121,7 @@ export default async function AdminRequestsPage({
               <Card key={lead.id}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="text-[1.0625rem] font-medium text-primary-950">
+                    <p className="font-[family-name:var(--font-display)] text-[1.25rem] font-medium text-primary-950">
                       {lead.firstName ? `${lead.firstName} ` : ""}
                       {lead.lastName}
                     </p>
@@ -167,7 +167,7 @@ export default async function AdminRequestsPage({
       {active === "bewertungen" ? (
         <ul className="flex flex-col gap-4">
           {valuations.length === 0 ? (
-            <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
+            <p className="rounded-[var(--radius-lg)] border border-line bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
               Noch keine Bewertungsanfragen eingegangen.
             </p>
           ) : (
@@ -175,7 +175,7 @@ export default async function AdminRequestsPage({
               <Card key={v.id}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="text-[1.0625rem] font-medium text-primary-950">
+                    <p className="font-[family-name:var(--font-display)] text-[1.25rem] font-medium text-primary-950">
                       {v.firstName} {v.lastName}
                     </p>
                     <p className="mt-1 flex flex-wrap items-center gap-2 text-[0.8125rem] text-ink-subtle">
@@ -259,7 +259,7 @@ export default async function AdminRequestsPage({
       {active === "kontakt" ? (
         <ul className="flex flex-col gap-4">
           {contacts.length === 0 ? (
-            <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
+            <p className="rounded-[var(--radius-lg)] border border-line bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
               Noch keine Kontaktanfragen eingegangen.
             </p>
           ) : (
@@ -267,7 +267,7 @@ export default async function AdminRequestsPage({
               <Card key={c.id}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="text-[1.0625rem] font-medium text-primary-950">
+                    <p className="font-[family-name:var(--font-display)] text-[1.25rem] font-medium text-primary-950">
                       {c.firstName ? `${c.firstName} ` : ""}
                       {c.lastName}
                     </p>
@@ -298,7 +298,7 @@ export default async function AdminRequestsPage({
       {active === "suchprofile" ? (
         <ul className="flex flex-col gap-4">
           {searchProfiles.length === 0 ? (
-            <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
+            <p className="rounded-[var(--radius-lg)] border border-line bg-surface px-6 py-16 text-center text-[0.9375rem] text-ink-subtle">
               Noch keine Suchprofile hinterlegt.
             </p>
           ) : (
@@ -306,7 +306,7 @@ export default async function AdminRequestsPage({
               <Card key={p.id}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="text-[1.0625rem] font-medium text-primary-950">
+                    <p className="font-[family-name:var(--font-display)] text-[1.25rem] font-medium text-primary-950">
                       {p.firstName ? `${p.firstName} ` : ""}
                       {p.lastName}
                     </p>

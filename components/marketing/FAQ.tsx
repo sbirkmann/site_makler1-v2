@@ -64,7 +64,9 @@ export function FAQ({
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
-            <SectionHeading eyebrow={eyebrow} title={title} description={description} />
+            <div className="lg:sticky lg:top-28">
+              <SectionHeading eyebrow={eyebrow} title={title} description={description} />
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <Accordion items={items} />

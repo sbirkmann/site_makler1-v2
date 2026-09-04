@@ -29,10 +29,10 @@ const rentOptions = [
 ];
 
 const selectClass =
-  "h-11 w-full appearance-none rounded-[var(--radius-md)] border border-line-strong bg-surface px-3.5 pr-9 " +
-  "text-[0.875rem] text-ink transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/15";
+  "h-11 w-full appearance-none rounded-[var(--radius-sm)] border border-line-strong bg-surface px-3.5 pr-9 " +
+  "text-[0.875rem] text-ink transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/20";
 
-const labelClass = "mb-1.5 block text-[0.75rem] font-medium uppercase tracking-[0.08em] text-ink-subtle";
+const labelClass = "mb-1.5 block text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-muted";
 
 function Chevron() {
   return (
@@ -140,7 +140,7 @@ export function PropertyFilters({
     <div className="flex flex-col gap-5">
       <div>
         <span className={labelClass}>Vermarktung</span>
-        <div className="flex rounded-[var(--radius-md)] border border-line-strong p-1">
+        <div className="flex rounded-full border border-line-strong p-1">
           {[
             { value: "", label: "Alle" },
             { value: "kauf", label: "Kaufen" },
@@ -151,9 +151,9 @@ export function PropertyFilters({
               type="button"
               onClick={() => setMarketing(o.value)}
               className={cn(
-                "flex-1 rounded-[var(--radius-sm)] px-3 py-2 text-[0.8125rem] font-medium transition-colors",
+                "flex-1 rounded-full px-3 py-2 text-[0.8125rem] font-medium transition-colors",
                 marketing === o.value
-                  ? "bg-primary-800 text-white"
+                  ? "bg-primary-900 text-ink-inverse"
                   : "text-ink-muted hover:bg-surface-muted",
               )}
             >
@@ -175,10 +175,10 @@ export function PropertyFilters({
                 onClick={() => toggleTyp(value)}
                 aria-pressed={active}
                 className={cn(
-                  "rounded-full border px-3.5 py-2 text-[0.8125rem] font-medium transition-all",
+                  "rounded-full border px-3.5 py-2 text-[0.8125rem] font-medium transition-colors",
                   active
-                    ? "border-primary-800 bg-primary-800 text-white"
-                    : "border-line-strong text-ink-muted hover:border-primary-300 hover:text-primary-800",
+                    ? "border-primary-900 bg-primary-900 text-ink-inverse"
+                    : "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900",
                 )}
               >
                 {label}
@@ -300,7 +300,7 @@ export function PropertyFilters({
           <IconFilter size={17} />
           Filter
           {activeCount > 0 ? (
-            <span className="ml-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary-800 px-1.5 text-[0.6875rem] font-semibold text-white">
+            <span className="ml-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent-400 px-1.5 text-[0.6875rem] font-semibold text-ink">
               {activeCount}
             </span>
           ) : null}
@@ -327,13 +327,13 @@ export function PropertyFilters({
           aria-modal="true"
           aria-label="Filter"
           className={cn(
-            "absolute inset-x-0 bottom-0 flex max-h-[88dvh] flex-col rounded-t-[var(--radius-2xl)] bg-surface shadow-[var(--shadow-float)]",
+            "absolute inset-x-0 bottom-0 flex max-h-[88dvh] flex-col rounded-t-[var(--radius-lg)] border-t border-line-strong bg-surface shadow-[var(--shadow-float)]",
             "transition-transform duration-400 [transition-timing-function:var(--ease-out-quint)]",
             open ? "translate-y-0" : "translate-y-full",
           )}
         >
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <h2 className="flex items-center gap-2 text-[1.0625rem] font-medium text-primary-950">
+            <h2 className="heading-4 flex items-center gap-2.5 text-primary-950">
               <IconSliders size={19} className="text-primary-600" />
               Filter
             </h2>
@@ -365,9 +365,9 @@ export function PropertyFilters({
         onSubmit={apply}
         className="hidden lg:block lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]"
       >
-        <div className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 shadow-[var(--shadow-subtle)]">
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-[0.9375rem] font-medium text-primary-950">
+        <div className="rounded-[var(--radius-sm)] border border-line bg-surface p-6">
+          <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
+            <h2 className="flex items-center gap-2 font-[family-name:var(--font-display)] text-[1.125rem] font-medium text-primary-950">
               <IconSliders size={18} className="text-primary-600" />
               Filter
             </h2>
@@ -375,7 +375,7 @@ export function PropertyFilters({
               <button
                 type="button"
                 onClick={reset}
-                className="text-[0.8125rem] text-ink-subtle underline-offset-4 transition-colors hover:text-primary-800 hover:underline"
+                className="text-[0.8125rem] text-ink-muted underline decoration-accent-500 decoration-1 underline-offset-4 transition-colors hover:text-primary-900 hover:decoration-2"
               >
                 Zurücksetzen
               </button>

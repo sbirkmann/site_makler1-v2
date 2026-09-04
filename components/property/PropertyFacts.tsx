@@ -7,21 +7,27 @@ export interface Fact {
   value: string;
 }
 
+/**
+ * Eckdaten v2: Definitionsliste mit Hairlines, Icon im duennen Kreis,
+ * Werte in der Serifen-Display-Schrift.
+ */
 export function PropertyFacts({ facts, className }: { facts: Fact[]; className?: string }) {
   return (
     <dl
       className={cn(
-        "grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-lg)] border border-line bg-line sm:grid-cols-3 lg:grid-cols-4",
+        "grid grid-cols-2 gap-px rounded-[var(--radius-sm)] border border-line bg-line sm:grid-cols-3 lg:grid-cols-4",
         className,
       )}
     >
       {facts.map((fact) => (
-        <div key={fact.label} className="flex flex-col gap-2 bg-surface p-4 sm:p-5">
-          <span className="text-primary-500">{fact.icon}</span>
-          <dt className="text-[0.75rem] uppercase tracking-[0.08em] text-ink-subtle">
+        <div key={fact.label} className="flex flex-col gap-3 bg-surface p-4 sm:p-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line-strong text-primary-700 [&>svg]:h-[18px] [&>svg]:w-[18px]">
+            {fact.icon}
+          </span>
+          <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-muted">
             {fact.label}
           </dt>
-          <dd className="text-[1.0625rem] font-medium leading-none text-primary-950">
+          <dd className="font-[family-name:var(--font-display)] text-[1.375rem] leading-none tracking-[-0.01em] text-primary-950">
             {fact.value}
           </dd>
         </div>
@@ -32,9 +38,12 @@ export function PropertyFacts({ facts, className }: { facts: Fact[]; className?:
 
 export function FeatureList({ items, className }: { items: string[]; className?: string }) {
   return (
-    <ul className={cn("grid gap-x-8 gap-y-3 sm:grid-cols-2", className)}>
+    <ul className={cn("grid gap-x-8 sm:grid-cols-2", className)}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[0.9375rem] text-ink">
+        <li
+          key={item}
+          className="flex items-start gap-3 border-b border-line py-3 text-[0.9375rem] text-ink"
+        >
           <svg
             width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"

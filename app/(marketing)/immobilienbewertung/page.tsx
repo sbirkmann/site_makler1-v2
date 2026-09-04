@@ -95,10 +95,15 @@ export default function ValuationPage() {
               return (
                 <Reveal key={m.title} delay={i * 100}>
                   <div className="flex h-full flex-col gap-4 rounded-[var(--radius-lg)] border border-line bg-surface p-7">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700">
-                      <Icon size={22} />
-                    </span>
-                    <h3 className="text-[1.0625rem] font-medium text-primary-950">{m.title}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-sm)] border border-line bg-surface-muted text-primary-700">
+                        <Icon size={22} />
+                      </span>
+                      <span className="font-[family-name:var(--font-display)] text-[1.5rem] italic leading-none text-accent-500">
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <h3 className="heading-4 text-primary-950">{m.title}</h3>
                     <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{m.text}</p>
                   </div>
                 </Reveal>

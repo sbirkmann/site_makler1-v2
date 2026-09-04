@@ -30,6 +30,10 @@ const items = [
   },
 ];
 
+/**
+ * Kennzahlen v2: grosse Serifen-Ziffern ueber einer kurzen Goldlinie,
+ * Spalten durch Hairlines getrennt. Das Icon sitzt klein daneben.
+ */
 export function TrustBar() {
   return (
     <Section className="py-12 sm:py-14">
@@ -38,21 +42,26 @@ export function TrustBar() {
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
-              <Reveal key={item.label} delay={i * 80}>
-                <div className="flex gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-line bg-surface text-primary-600">
-                    <Icon size={21} />
-                  </span>
-                  <div className="flex flex-col gap-1">
-                    <dt className="sr-only">{item.label}</dt>
-                    <dd className="font-[family-name:var(--font-display)] text-[1.5rem] leading-none tracking-[-0.015em] text-primary-900">
+              <Reveal
+                key={item.label}
+                delay={i * 80}
+                className="lg:border-l lg:border-line lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+              >
+                <div className="flex flex-col gap-3">
+                  <span aria-hidden="true" className="block h-px w-8 bg-accent-500" />
+                  <dt className="sr-only">{item.label}</dt>
+                  <dd className="flex items-end justify-between gap-4">
+                    <span className="font-[family-name:var(--font-display)] text-[2.75rem] leading-none tracking-[-0.025em] text-primary-900 sm:text-[3rem]">
                       {item.value}
-                    </dd>
-                    <p className="text-[0.9375rem] font-medium leading-snug text-primary-950">
-                      {item.label}
-                    </p>
-                    <p className="text-[0.8125rem] text-ink-subtle">{item.detail}</p>
-                  </div>
+                    </span>
+                    <span className="mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-primary-600">
+                      <Icon size={17} />
+                    </span>
+                  </dd>
+                  <p className="text-[0.9375rem] font-medium leading-snug text-primary-950">
+                    {item.label}
+                  </p>
+                  <p className="-mt-2 text-[0.8125rem] text-ink-subtle">{item.detail}</p>
                 </div>
               </Reveal>
             );

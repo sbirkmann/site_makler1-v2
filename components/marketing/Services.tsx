@@ -57,6 +57,10 @@ const services = [
   },
 ];
 
+/**
+ * Leistungen v2: nummerierte, editoriale Liste. Hairlines statt Kartenrahmen,
+ * Serifen-Titel, Ziffer in Gold – wie ein Inhaltsverzeichnis.
+ */
 export function Services() {
   return (
     <Section tone="muted">
@@ -64,30 +68,42 @@ export function Services() {
         <Reveal>
           <SectionHeading
             eyebrow="Leistungen"
-            title="Zählen Sie auf eine Begleitung, die vollständig ist"
+            title={
+              <>
+                Zählen Sie auf eine Begleitung, die <em>vollständig</em> ist
+              </>
+            }
             description="Vom ersten Gespräch bis zur Schlüsselübergabe übernehmen wir jeden Schritt – und geben ehrlich zurück, was wir sehen."
           />
         </Reveal>
 
-        <div className="mt-8 grid gap-px overflow-hidden rounded-[var(--radius-xl)] border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid border-t border-line-strong md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
             const Icon = service.icon;
+            const number = String(i + 1).padStart(2, "0");
             return (
-              <Reveal key={service.title} delay={(i % 3) * 90}>
+              <Reveal
+                key={service.title}
+                delay={(i % 3) * 90}
+                className="border-b border-line md:[&:nth-child(odd)]:border-r lg:[&:nth-child(odd)]:border-r-0 lg:[&:not(:nth-child(3n))]:border-r"
+              >
                 <Link
                   href={service.href}
-                  className="group flex h-full flex-col gap-4 bg-surface p-7 transition-colors duration-300 hover:bg-primary-50/50 sm:p-8"
+                  className="group flex h-full flex-col gap-5 px-1 py-8 transition-colors duration-300 hover:bg-surface sm:px-7 sm:py-9"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700 transition-colors duration-300 group-hover:bg-primary-800 group-hover:text-white">
-                    <Icon size={22} />
+                  <span className="flex items-center justify-between">
+                    <span className="font-[family-name:var(--font-display)] text-[1.75rem] leading-none tracking-[-0.02em] text-accent-500">
+                      {number}
+                    </span>
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-primary-700 transition-colors duration-300 group-hover:border-primary-900 group-hover:bg-primary-900 group-hover:text-ink-inverse">
+                      <Icon size={20} />
+                    </span>
                   </span>
-                  <h3 className="text-[1.125rem] font-medium leading-snug text-primary-950">
-                    {service.title}
-                  </h3>
+                  <h3 className="heading-4 text-primary-950">{service.title}</h3>
                   <p className="flex-1 text-[0.9375rem] leading-relaxed text-ink-muted">
                     {service.text}
                   </p>
-                  <span className="mt-1 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-primary-800">
+                  <span className="mt-1 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-primary-800 underline decoration-accent-500 decoration-1 underline-offset-[6px] group-hover:decoration-2">
                     {service.linkLabel}
                     <IconArrowUpRight
                       size={16}

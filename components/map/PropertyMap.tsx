@@ -45,11 +45,11 @@ function popupHtml(marker: MapMarker) {
   const title = escapeHtml(marker.title);
   const subtitle = marker.subtitle ? escapeHtml(marker.subtitle) : "";
   const image = marker.imageUrl
-    ? `<img src="${escapeHtml(marker.imageUrl)}" alt="" class="mb-2 h-24 w-full rounded object-cover" />`
+    ? `<img src="${escapeHtml(marker.imageUrl)}" alt="" class="mb-2 h-24 w-full rounded-[2px] border border-line object-cover" />`
     : "";
   const heading = marker.href
-    ? `<a href="${escapeHtml(marker.href)}" class="font-medium text-primary-900 underline-offset-2 hover:underline">${title}</a>`
-    : `<span class="font-medium text-primary-900">${title}</span>`;
+    ? `<a href="${escapeHtml(marker.href)}" class="font-[family-name:var(--font-display)] text-[0.9375rem] font-medium text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-4 hover:decoration-2">${title}</a>`
+    : `<span class="font-[family-name:var(--font-display)] text-[0.9375rem] font-medium text-primary-900">${title}</span>`;
 
   return `<div class="w-52 text-[0.8125rem] leading-snug">${image}${heading}${
     subtitle ? `<p class="mt-1 text-ink-muted">${subtitle}</p>` : ""
@@ -110,7 +110,8 @@ export function PropertyMap({
             // Ungefaehre Lage: 300-m-Kreis statt punktgenauer Adresse.
             L.circle([marker.latitude, marker.longitude], {
               radius: 300,
-              color: "#233d64",
+              color: "#1f3a2d",
+              fillColor: "#1f3a2d",
               weight: 1.5,
               fillOpacity: 0.12,
             }).addTo(map);
@@ -155,7 +156,7 @@ export function PropertyMap({
     return (
       <div
         className={cn(
-          "flex items-center justify-center rounded-[var(--radius-lg)] border border-line bg-surface-sunken text-[0.875rem] text-ink-subtle",
+          "flex items-center justify-center rounded-[var(--radius-sm)] border border-line bg-surface-sunken text-[0.875rem] text-ink-subtle",
           className,
         )}
       >
@@ -171,7 +172,7 @@ export function PropertyMap({
       role="application"
       aria-label="Karte mit Immobilienstandorten"
       className={cn(
-        "z-0 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface-sunken",
+        "z-0 overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken",
         className,
       )}
     />

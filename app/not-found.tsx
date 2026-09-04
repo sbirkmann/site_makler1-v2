@@ -5,10 +5,13 @@ import { IconArrowRight } from "@/components/icons";
 export default function NotFound() {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center bg-surface-muted px-5 py-20 text-center">
-      <p className="font-[family-name:var(--font-display)] text-[5rem] font-bold leading-none text-primary-200">
+      <p className="font-[family-name:var(--font-display)] text-[6rem] font-medium italic leading-none tracking-[-0.03em] text-accent-500">
         404
       </p>
-      <h1 className="display-3 mt-6 text-primary-950">Diese Seite gibt es nicht</h1>
+      <span aria-hidden="true" className="mt-6 block h-px w-10 bg-line-strong" />
+      <h1 className="display-2 mt-6 text-primary-950">
+        Diese Seite <em>gibt es nicht</em>
+      </h1>
       <p className="lead mt-4 max-w-md">
         Möglicherweise wurde das Objekt bereits vermittelt oder die Adresse hat sich geändert.
       </p>
@@ -23,7 +26,7 @@ export default function NotFound() {
       </div>
       <Link
         href="/kontakt"
-        className="mt-8 text-[0.875rem] text-ink-muted underline-offset-4 hover:text-primary-800 hover:underline"
+        className="mt-8 text-[0.875rem] text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-[6px] hover:decoration-2"
       >
         Sie suchen etwas Bestimmtes? Sprechen Sie uns an.
       </Link>

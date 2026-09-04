@@ -5,6 +5,8 @@ import { getSession } from "@/lib/services/auth";
 import { logoutAction } from "@/lib/actions/admin";
 import { Logo } from "@/components/layout/Logo";
 import { AdminNav } from "@/app/admin/AdminNav";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { IconLogout } from "@/components/icons";
 import "@/app/globals.css";
 
@@ -27,9 +29,9 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         <div className="mx-auto flex h-16 max-w-[100rem] items-center justify-between gap-6 px-5 sm:px-8">
           <div className="flex items-center gap-5">
             <Logo href="/admin" />
-            <span className="hidden rounded-full bg-surface-sunken px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-ink-muted sm:inline">
+            <Badge tone="outline" className="hidden sm:inline-flex">
               Verwaltung
-            </span>
+            </Badge>
           </div>
 
           <div className="flex items-center gap-4">
@@ -44,13 +46,10 @@ export default async function AdminLayout({ children }: { children: ReactNode })
               {session.email}
             </span>
             <form action={logoutAction}>
-              <button
-                type="submit"
-                className="flex items-center gap-2 rounded-[var(--radius-sm)] border border-line-strong px-3 py-2 text-[0.8125rem] font-medium text-ink-muted transition-colors hover:border-primary-400 hover:text-primary-800"
-              >
+              <Button type="submit" variant="outline" size="sm">
                 <IconLogout size={16} />
                 Abmelden
-              </button>
+              </Button>
             </form>
           </div>
         </div>

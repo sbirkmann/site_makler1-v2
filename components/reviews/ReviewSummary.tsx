@@ -1,6 +1,10 @@
 import { cn } from "@/lib/utils";
 import { RatingStars } from "@/components/reviews/RatingStars";
 
+/**
+ * Bewertungsuebersicht v2: grosse Serifen-Ziffer ueber einer Goldlinie,
+ * daneben die Verteilung als schmale Balken mit Hairline-Trenner.
+ */
 export function ReviewSummary({
   average,
   total,
@@ -19,8 +23,9 @@ export function ReviewSummary({
         className,
       )}
     >
-      <div className="flex shrink-0 flex-col items-start gap-3 sm:items-center">
-        <p className="font-[family-name:var(--font-display)] text-[3.5rem] leading-none tracking-[-0.03em] text-primary-900">
+      <div className="flex shrink-0 flex-col items-start gap-3 sm:items-center sm:border-r sm:border-line sm:pr-12">
+        <span aria-hidden="true" className="block h-px w-8 bg-accent-500" />
+        <p className="font-[family-name:var(--font-display)] text-[4.5rem] leading-none tracking-[-0.03em] text-primary-900">
           {average.toFixed(1).replace(".", ",")}
         </p>
         <RatingStars rating={average} size={20} />
@@ -38,13 +43,13 @@ export function ReviewSummary({
               <span className="w-14 shrink-0 text-[0.8125rem] tabular-nums text-ink-muted">
                 {stars} Sterne
               </span>
-              <span className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-sunken">
+              <span className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-sunken">
                 <span
-                  className="block h-full rounded-full bg-accent-400 transition-[width] duration-700 [transition-timing-function:var(--ease-out-quint)]"
+                  className="block h-full rounded-full bg-accent-500 transition-[width] duration-700 [transition-timing-function:var(--ease-out-quint)]"
                   style={{ width: `${percent}%` }}
                 />
               </span>
-              <span className="w-6 shrink-0 text-right text-[0.8125rem] tabular-nums text-ink-subtle">
+              <span className="w-6 shrink-0 text-right font-[family-name:var(--font-display)] text-[0.9375rem] tabular-nums text-primary-900">
                 {count}
               </span>
             </div>

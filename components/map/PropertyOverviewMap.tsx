@@ -23,7 +23,7 @@ export function PropertyOverviewMap({
   if (markers.length === 0) return null;
 
   return (
-    <div className={cn("rounded-[var(--radius-lg)] border border-line bg-surface", className)}>
+    <div className={cn("rounded-[var(--radius-sm)] border border-line bg-surface", className)}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -31,12 +31,14 @@ export function PropertyOverviewMap({
         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
       >
         <span className="flex items-center gap-2.5">
-          <IconLocation size={18} className="shrink-0 text-primary-500" />
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line-strong text-primary-700">
+            <IconLocation size={16} />
+          </span>
           <span className="text-[0.9375rem] font-medium text-primary-900">
             {open ? "Kartenansicht ausblenden" : "Objekte auf der Karte ansehen"}
           </span>
         </span>
-        <span className="text-[0.8125rem] text-ink-subtle">
+        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
           {markers.length} {markers.length === 1 ? "Objekt" : "Objekte"}
         </span>
       </button>

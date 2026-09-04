@@ -29,8 +29,9 @@ export default function AdminLoginPage() {
           <Logo href="/" />
         </div>
 
-        <div className="mt-8 rounded-[var(--radius-xl)] border border-line bg-surface p-7 shadow-[var(--shadow-card)] sm:p-9">
-          <h1 className="heading-4 text-primary-950">Anmeldung zur Verwaltung</h1>
+        <div className="mt-8 rounded-[var(--radius-lg)] border border-line bg-surface p-7 sm:p-9">
+          <span className="eyebrow">Verwaltung</span>
+          <h1 className="display-3 mt-3 text-primary-950">Anmeldung zur Verwaltung</h1>
           <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-muted">
             Dieser Bereich ist nicht öffentlich zugänglich.
           </p>
@@ -59,13 +60,13 @@ export default function AdminLoginPage() {
           </form>
 
           <p className="mt-6 flex items-start gap-2.5 rounded-[var(--radius-md)] border border-line bg-surface-muted px-4 py-3 text-[0.8125rem] leading-relaxed text-ink-muted">
-            <IconInfo size={16} className="mt-0.5 shrink-0 text-primary-500" />
+            <IconInfo size={16} className="mt-0.5 shrink-0 text-accent-600" />
             <span>
               <strong className="font-medium text-primary-900">Demo-Zugang:</strong>{" "}
               admin@wohnwert-immobilien.example / makler2024 – konfigurierbar über die Variablen
-              <code className="mx-1 rounded bg-surface px-1 py-0.5 text-[0.75rem]">ADMIN_EMAIL</code>
+              <code className="mx-1 rounded-[var(--radius-xs)] border border-line bg-surface px-1 py-0.5 text-[0.75rem]">ADMIN_EMAIL</code>
               und
-              <code className="mx-1 rounded bg-surface px-1 py-0.5 text-[0.75rem]">
+              <code className="mx-1 rounded-[var(--radius-xs)] border border-line bg-surface px-1 py-0.5 text-[0.75rem]">
                 ADMIN_PASSWORD
               </code>
               .

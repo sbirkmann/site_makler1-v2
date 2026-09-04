@@ -14,6 +14,7 @@ const awards = [
   { source: "IHK Köln", label: "Zertifizierter Fachbetrieb", year: "seit 2011" },
 ];
 
+/** Siegel v2: doppelter Kreis in Gruen, Lorbeer in Gold, Haken in Waldgruen. */
 function Seal({ source, label, year }: (typeof awards)[number]) {
   return (
     <div className="flex items-center gap-4">
@@ -22,23 +23,31 @@ function Seal({ source, label, year }: (typeof awards)[number]) {
         className="relative flex h-14 w-14 shrink-0 items-center justify-center"
       >
         <svg viewBox="0 0 56 56" fill="none" className="absolute inset-0 h-full w-full">
-          {/* Lorbeer-artige Klammer, eigenständig konstruiert */}
+          <circle cx="28" cy="28" r="26.5" stroke="var(--color-line-strong)" strokeWidth="1" />
+          <circle
+            cx="28"
+            cy="28"
+            r="22.5"
+            stroke="var(--color-primary-800)"
+            strokeWidth="1"
+            strokeDasharray="2 3"
+          />
+          {/* Lorbeer-artige Klammer, eigenstaendig konstruiert */}
           <path
-            d="M18 10c-6 4-9 10-9 18s3 14 9 18"
-            stroke="var(--color-accent-400)"
-            strokeWidth="1.6"
+            d="M19 15c-5 3.5-7.5 8-7.5 13s2.5 9.5 7.5 13"
+            stroke="var(--color-accent-500)"
+            strokeWidth="1.4"
             strokeLinecap="round"
           />
           <path
-            d="M38 10c6 4 9 10 9 18s-3 14-9 18"
-            stroke="var(--color-accent-400)"
-            strokeWidth="1.6"
+            d="M37 15c5 3.5 7.5 8 7.5 13s-2.5 9.5-7.5 13"
+            stroke="var(--color-accent-500)"
+            strokeWidth="1.4"
             strokeLinecap="round"
           />
-          <circle cx="28" cy="28" r="9.5" stroke="var(--color-primary-300)" strokeWidth="1.2" />
           <path
-            d="m24.4 28.2 2.6 2.6 5-5.6"
-            stroke="var(--color-primary-700)"
+            d="m24.2 28.4 2.8 2.8 5.2-6"
+            stroke="var(--color-primary-800)"
             strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -49,8 +58,10 @@ function Seal({ source, label, year }: (typeof awards)[number]) {
         <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.13em] text-ink-subtle">
           {source}
         </span>
-        <span className="text-[0.9375rem] font-medium leading-snug text-primary-950">{label}</span>
-        <span className="text-[0.75rem] text-ink-subtle">{year}</span>
+        <span className="font-[family-name:var(--font-display)] text-[1.0625rem] font-medium leading-snug text-primary-950">
+          {label}
+        </span>
+        <span className="text-[0.75rem] text-accent-600">{year}</span>
       </span>
     </div>
   );
@@ -58,14 +69,18 @@ function Seal({ source, label, year }: (typeof awards)[number]) {
 
 export function Credentials() {
   return (
-    <section className="border-b border-line bg-surface py-12 sm:py-14 lg:py-16">
+    <section className="border-y border-line bg-surface py-12 sm:py-14 lg:py-16">
       <Container size="wide">
-        <p className="text-center text-[0.8125rem] uppercase tracking-[0.14em] text-ink-subtle">
-          Ausgezeichnete Beratungsqualität im Rheinland
+        <p className="flex justify-center text-center">
+          <span className="eyebrow">Ausgezeichnete Beratungsqualität im Rheinland</span>
         </p>
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {awards.map((award, i) => (
-            <Reveal key={award.label} delay={i * 80}>
+            <Reveal
+              key={award.label}
+              delay={i * 80}
+              className="lg:border-l lg:border-line lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
+            >
               <Seal {...award} />
             </Reveal>
           ))}

@@ -44,7 +44,7 @@ export default async function RatgeberPage({
           <Reveal>
             <span className="eyebrow">Ratgeber</span>
             <h1 className="page-title mt-4 max-w-3xl text-balance text-primary-950">
-              Wissen, das vor der Entscheidung hilft
+              Wissen, das <em className="font-normal italic text-accent-500">vor der Entscheidung</em> hilft
             </h1>
             <p className="lead mt-5 max-w-2xl">
               Konkrete Antworten auf die Fragen, die uns Eigentümer und Käufer am häufigsten
@@ -60,8 +60,8 @@ export default async function RatgeberPage({
                 className={cn(
                   "rounded-full border px-4 py-2 text-[0.875rem] font-medium transition-colors",
                   !kategorie
-                    ? "border-primary-800 bg-primary-800 text-white"
-                    : "border-line-strong text-ink-muted hover:border-primary-300 hover:text-primary-800",
+                    ? "border-primary-900 bg-primary-900 text-ink-inverse"
+                    : "border-line-strong text-ink-muted hover:border-primary-900 hover:text-primary-900",
                 )}
               >
                 Alle Themen
@@ -89,7 +89,7 @@ export default async function RatgeberPage({
       <Section className="pt-8">
         <Container size="wide">
           {posts.length === 0 ? (
-            <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface-muted px-6 py-16 text-center text-ink-muted">
+            <p className="rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface-muted px-6 py-16 text-center font-[family-name:var(--font-display)] text-[1.125rem] text-ink-muted">
               In dieser Kategorie sind noch keine Artikel veröffentlicht.
             </p>
           ) : (
@@ -97,10 +97,10 @@ export default async function RatgeberPage({
               {/* Aufmacher */}
               {lead ? (
                 <Reveal>
-                  <article className="group grid gap-8 overflow-hidden rounded-[var(--radius-xl)] border border-line bg-surface lg:grid-cols-2">
+                  <article className="group grid gap-8 overflow-hidden rounded-[var(--radius-sm)] border border-line-strong bg-surface lg:grid-cols-2">
                     <Link
                       href={`/ratgeber/${lead.slug}`}
-                      className="relative aspect-[16/10] overflow-hidden bg-surface-sunken lg:aspect-auto lg:min-h-80"
+                      className="relative aspect-[16/10] overflow-hidden border-b border-line bg-surface-sunken lg:aspect-auto lg:min-h-80 lg:border-b-0 lg:border-r"
                     >
                       {lead.coverImage ? (
                         <Image
@@ -114,11 +114,14 @@ export default async function RatgeberPage({
                       ) : null}
                     </Link>
                     <div className="flex flex-col justify-center gap-4 p-7 sm:p-9 lg:pr-12">
-                      <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary-500">
+                      <p className="eyebrow !text-[0.6875rem] !tracking-[0.14em]">
                         {lead.category?.name ?? "Ratgeber"}
                       </p>
-                      <h2 className="heading-4 text-balance text-primary-950">
-                        <Link href={`/ratgeber/${lead.slug}`} className="hover:text-primary-700">
+                      <h2 className="display-3 text-balance text-primary-950">
+                        <Link
+                          href={`/ratgeber/${lead.slug}`}
+                          className="decoration-accent-500 decoration-1 underline-offset-4 hover:underline"
+                        >
                           {lead.title}
                         </Link>
                       </h2>
@@ -132,7 +135,7 @@ export default async function RatgeberPage({
                       </p>
                       <Link
                         href={`/ratgeber/${lead.slug}`}
-                        className="mt-1 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-primary-800"
+                        className="mt-1 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-[6px] hover:decoration-2"
                       >
                         Artikel lesen
                         <IconArrowRight
@@ -152,7 +155,7 @@ export default async function RatgeberPage({
                       <article className="group flex h-full flex-col">
                         <Link
                           href={`/ratgeber/${post.slug}`}
-                          className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken"
+                          className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken"
                         >
                           {post.coverImage ? (
                             <Image
@@ -164,12 +167,15 @@ export default async function RatgeberPage({
                             />
                           ) : null}
                         </Link>
-                        <div className="mt-5 flex flex-1 flex-col">
-                          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary-500">
+                        <div className="mt-5 flex flex-1 flex-col border-t border-line pt-4">
+                          <p className="eyebrow !text-[0.6875rem] !tracking-[0.14em] [&::before]:w-4">
                             {post.category?.name ?? "Ratgeber"}
                           </p>
-                          <h2 className="heading-4 mt-2.5 leading-snug text-primary-950">
-                            <Link href={`/ratgeber/${post.slug}`} className="hover:text-primary-700">
+                          <h2 className="heading-4 mt-3 text-primary-950">
+                            <Link
+                              href={`/ratgeber/${post.slug}`}
+                              className="decoration-accent-500 decoration-1 underline-offset-4 hover:underline"
+                            >
                               {post.title}
                             </Link>
                           </h2>

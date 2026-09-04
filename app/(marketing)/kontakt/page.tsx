@@ -49,7 +49,7 @@ export default async function ContactPage({
           <Reveal>
             <span className="eyebrow">Kontakt</span>
             <h1 className="page-title mt-4 max-w-3xl text-balance text-primary-950">
-              Sprechen wir über Ihre Immobilie
+              Sprechen wir über <em className="font-normal italic text-accent-500">Ihre Immobilie</em>
             </h1>
             <p className="lead mt-5 max-w-2xl">
               Rufen Sie an, schreiben Sie oder nutzen Sie das Formular. Wir antworten in der Regel
@@ -73,14 +73,14 @@ export default async function ContactPage({
                       href={site.contact.phoneHref}
                       className="group flex items-start gap-4 transition-colors"
                     >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700 transition-colors group-hover:bg-primary-800 group-hover:text-white">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-primary-700 transition-colors group-hover:border-primary-900 group-hover:bg-primary-900 group-hover:text-ink-inverse">
                         <IconPhone size={20} />
                       </span>
                       <span className="flex flex-col">
-                        <span className="text-[0.75rem] uppercase tracking-[0.1em] text-ink-subtle">
+                        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
                           Telefon
                         </span>
-                        <span className="text-[1.0625rem] font-medium text-primary-950">
+                        <span className="font-[family-name:var(--font-display)] text-[1.125rem] font-medium text-primary-950">
                           {site.contact.phone}
                         </span>
                       </span>
@@ -90,42 +90,42 @@ export default async function ContactPage({
                       href={`mailto:${site.contact.email}`}
                       className="group flex items-start gap-4"
                     >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700 transition-colors group-hover:bg-primary-800 group-hover:text-white">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-primary-700 transition-colors group-hover:border-primary-900 group-hover:bg-primary-900 group-hover:text-ink-inverse">
                         <IconMail size={20} />
                       </span>
                       <span className="flex min-w-0 flex-col">
-                        <span className="text-[0.75rem] uppercase tracking-[0.1em] text-ink-subtle">
+                        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
                           E-Mail
                         </span>
-                        <span className="break-all text-[1.0625rem] font-medium text-primary-950">
+                        <span className="break-all font-[family-name:var(--font-display)] text-[1.125rem] font-medium text-primary-950">
                           {site.contact.email}
                         </span>
                       </span>
                     </a>
 
                     <div className="flex items-start gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-primary-700">
                         <IconWhatsApp size={20} />
                       </span>
                       <span className="flex flex-col">
-                        <span className="text-[0.75rem] uppercase tracking-[0.1em] text-ink-subtle">
+                        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
                           WhatsApp
                         </span>
-                        <span className="text-[1.0625rem] font-medium text-primary-950">
+                        <span className="font-[family-name:var(--font-display)] text-[1.125rem] font-medium text-primary-950">
                           {site.contact.whatsapp}
                         </span>
                       </span>
                     </div>
 
                     <address className="flex items-start gap-4 not-italic">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-surface-sunken text-primary-700">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-primary-700">
                         <IconLocation size={20} />
                       </span>
                       <span className="flex flex-col">
-                        <span className="text-[0.75rem] uppercase tracking-[0.1em] text-ink-subtle">
+                        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink-subtle">
                           Büro
                         </span>
-                        <span className="text-[1.0625rem] font-medium leading-snug text-primary-950">
+                        <span className="font-[family-name:var(--font-display)] text-[1.125rem] font-medium leading-snug text-primary-950">
                           {site.address.street}
                           <br />
                           {site.address.zipCode} {site.address.city}
@@ -139,8 +139,10 @@ export default async function ContactPage({
               {/* Oeffnungszeiten */}
               <Reveal delay={90}>
                 <div className="rounded-[var(--radius-lg)] border border-line bg-surface p-7">
-                  <h2 className="heading-4 flex items-center gap-2.5 text-primary-950">
-                    <IconClock size={20} className="text-primary-600" />
+                  <h2 className="heading-4 flex items-center gap-3 text-primary-950">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-primary-700">
+                      <IconClock size={17} />
+                    </span>
                     Öffnungszeiten
                   </h2>
                   <dl className="mt-5 divide-y divide-line">
@@ -186,8 +188,9 @@ export default async function ContactPage({
 
             {/* Formular bzw. Suchprofil-Funnel */}
             <Reveal delay={60}>
-              <div className="rounded-[var(--radius-xl)] border border-line bg-surface p-6 shadow-[var(--shadow-card)] sm:p-8">
-                <h2 className="heading-4 text-primary-950">
+              <div className="rounded-[var(--radius-lg)] border border-line-strong bg-surface p-6 sm:p-8">
+                <span aria-hidden="true" className="mb-5 block h-px w-8 bg-accent-500" />
+                <h2 className="display-3 text-primary-950">
                   {showSearchProfile ? "Ihr Suchprofil" : "Schreiben Sie uns"}
                 </h2>
                 <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-muted">
@@ -211,6 +214,7 @@ export default async function ContactPage({
       {/* Ansprechpartner */}
       <Section tone="muted">
         <Container size="wide">
+          <span aria-hidden="true" className="mb-5 block h-px w-8 bg-accent-500" />
           <h2 className="display-2 text-primary-950">Ihre Ansprechpartner</h2>
           <p className="lead mt-4 max-w-2xl">
             Sie können sich auch direkt an die Person wenden, die Ihr Thema betreut.
@@ -226,14 +230,14 @@ export default async function ContactPage({
                         alt=""
                         width={56}
                         height={56}
-                        className="h-14 w-14 shrink-0 rounded-full object-cover"
+                        className="h-14 w-14 shrink-0 rounded-full border border-line object-cover"
                       />
                     ) : null}
                     <div className="min-w-0">
-                      <p className="truncate text-[0.9375rem] font-medium text-primary-950">
+                      <p className="truncate font-[family-name:var(--font-display)] text-[1.0625rem] font-medium text-primary-950">
                         {agent.firstName} {agent.lastName}
                       </p>
-                      <p className="mt-0.5 text-[0.75rem] leading-snug text-ink-subtle">
+                      <p className="mt-0.5 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] leading-snug text-accent-600">
                         {agent.role}
                       </p>
                     </div>

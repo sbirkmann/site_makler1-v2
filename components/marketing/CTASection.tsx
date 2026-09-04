@@ -5,6 +5,10 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconArrowRight } from "@/components/icons";
 
+/**
+ * CTA v2: dunkles Waldgruen mit Hairlines statt Radien.
+ * Split-Variante: kantiges Bild links, goldene Vertikallinie als Trenner.
+ */
 export function CTASection({
   eyebrow,
   title,
@@ -34,9 +38,9 @@ export function CTASection({
 }) {
   if (variant === "split" && image) {
     return (
-      <section className={cn("py-12 sm:py-16 lg:py-20", className)}>
+      <section className={cn("border-t border-line bg-surface py-12 sm:py-16 lg:py-20", className)}>
         <Container size="wide">
-          <div className="grid overflow-hidden rounded-[var(--radius-2xl)] bg-primary-950 lg:grid-cols-2">
+          <div className="grid border border-primary-900 bg-primary-950 text-ink-inverse lg:grid-cols-2">
             <div className="relative min-h-72 lg:min-h-0">
               <Image
                 src={image}
@@ -46,19 +50,24 @@ export function CTASection({
                 className="object-cover"
               />
             </div>
-            <div className="flex flex-col justify-center gap-6 p-8 sm:p-12 lg:p-14">
-              {eyebrow ? (
-                <span className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-accent-300">
-                  {eyebrow}
-                </span>
-              ) : null}
-              <h2 className="display-3 text-balance text-white">{title}</h2>
+            <div className="relative flex flex-col justify-center gap-6 p-8 sm:p-12 lg:p-16">
+              {/* Goldene Vertikallinie an der Bildkante */}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-8 bottom-8 hidden w-px bg-accent-400 lg:block"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute left-8 right-8 top-0 h-px bg-accent-400 lg:hidden"
+              />
+              {eyebrow ? <span className="eyebrow !text-accent-300">{eyebrow}</span> : null}
+              <h2 className="display-2 text-balance text-white">{title}</h2>
               <p className="max-w-lg text-[1.0625rem] leading-relaxed text-white/65">
                 {description}
               </p>
               {children}
               <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={primaryHref} size="lg" variant="inverse">
+                <ButtonLink href={primaryHref} size="lg" variant="accent">
                   {primaryLabel}
                   <IconArrowRight size={18} />
                 </ButtonLink>
@@ -67,7 +76,7 @@ export function CTASection({
                     href={secondaryHref}
                     size="lg"
                     variant="outline"
-                    className="border-white/25 text-white hover:border-white/50 hover:bg-white/5"
+                    className="border-white/25 text-white hover:border-white hover:bg-white hover:text-primary-950"
                   >
                     {secondaryLabel}
                   </ButtonLink>
@@ -84,34 +93,43 @@ export function CTASection({
 
   return (
     <section
-      className={cn("py-12 sm:py-16 lg:py-20", dark ? "bg-primary-900" : "bg-surface-muted", className)}
+      className={cn(
+        "border-t py-12 sm:py-16 lg:py-20",
+        dark ? "border-primary-800 bg-primary-950 text-ink-inverse" : "border-line bg-surface-muted",
+        className,
+      )}
     >
       <Container>
-        <div className="flex flex-col gap-6">
-          {eyebrow ? (
-            <span
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
+            {eyebrow ? (
+              <span className={cn("eyebrow", dark && "!text-accent-300")}>{eyebrow}</span>
+            ) : null}
+            <h2
               className={cn(
-                "text-[0.75rem] font-semibold uppercase tracking-[0.16em]",
-                dark ? "text-accent-300" : "text-primary-500",
+                "display-2 max-w-3xl text-balance",
+                dark ? "text-white" : "text-primary-950",
               )}
             >
-              {eyebrow}
-            </span>
-          ) : null}
-          <h2 className={cn("display-2 max-w-3xl text-balance", dark ? "text-white" : "text-primary-950")}>
-            {title}
-          </h2>
-          <p
+              {title}
+            </h2>
+            <p
+              className={cn(
+                "max-w-2xl text-[1.0625rem] leading-relaxed text-pretty",
+                dark ? "text-white/65" : "text-ink-muted",
+              )}
+            >
+              {description}
+            </p>
+            {children}
+          </div>
+          <div
             className={cn(
-              "max-w-2xl text-[1.0625rem] leading-relaxed text-pretty",
-              dark ? "text-white/65" : "text-ink-muted",
+              "flex flex-col gap-3 border-t pt-8 sm:flex-row",
+              dark ? "border-white/15" : "border-line-strong",
             )}
           >
-            {description}
-          </p>
-          {children}
-          <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={primaryHref} size="lg" variant={dark ? "inverse" : "primary"}>
+            <ButtonLink href={primaryHref} size="lg" variant={dark ? "accent" : "primary"}>
               {primaryLabel}
               <IconArrowRight size={18} />
             </ButtonLink>
@@ -120,7 +138,11 @@ export function CTASection({
                 href={secondaryHref}
                 size="lg"
                 variant="outline"
-                className={dark ? "border-white/25 text-white hover:border-white/50 hover:bg-white/5" : ""}
+                className={
+                  dark
+                    ? "border-white/25 text-white hover:border-white hover:bg-white hover:text-primary-950"
+                    : ""
+                }
               >
                 {secondaryLabel}
               </ButtonLink>

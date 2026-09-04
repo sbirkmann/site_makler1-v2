@@ -34,7 +34,7 @@ export function PropertySort() {
         value={searchParams.get("sort") ?? "neueste"}
         onChange={(e) => change(e.target.value)}
         disabled={pending}
-        className="h-11 w-full appearance-none rounded-[var(--radius-md)] border border-line-strong bg-surface pl-3.5 pr-9 text-[0.875rem] text-ink transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/15"
+        className="h-11 w-full appearance-none rounded-[var(--radius-sm)] border border-line-strong bg-surface pl-3.5 pr-9 text-[0.875rem] text-ink transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/20"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>

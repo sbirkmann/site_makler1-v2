@@ -30,7 +30,7 @@ export function FunnelLayout({
             <ul className="mt-8 flex flex-col gap-3.5">
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-100 text-accent-700">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-accent-400 text-accent-600">
                     <IconCheck size={12} strokeWidth={3} />
                   </span>
                   <span className="text-[0.9375rem] leading-relaxed text-ink-muted">{benefit}</span>
@@ -39,13 +39,13 @@ export function FunnelLayout({
             </ul>
 
             <p className="mt-8 flex items-start gap-2.5 border-t border-line pt-6 text-[0.8125rem] leading-relaxed text-ink-subtle">
-              <IconShield size={16} className="mt-0.5 shrink-0 text-primary-500" />
+              <IconShield size={16} className="mt-0.5 shrink-0 text-accent-600" />
               Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht
               an Dritte weitergegeben.
             </p>
           </aside>
 
-          <div className="min-w-0 rounded-[var(--radius-xl)] border border-line bg-surface p-6 shadow-[var(--shadow-card)] sm:p-8 lg:p-10">
+          <div className="min-w-0 rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-8 lg:p-10">
             {children}
           </div>
         </div>

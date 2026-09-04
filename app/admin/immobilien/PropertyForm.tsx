@@ -41,7 +41,7 @@ export function PropertyForm({
       {(state.status === "success" || saved) && (
         <p
           role="status"
-          className="flex items-center gap-2.5 rounded-[var(--radius-md)] border border-[color-mix(in_srgb,var(--color-success)_30%,white)] bg-[color-mix(in_srgb,var(--color-success)_7%,white)] px-4 py-3 text-[0.875rem] text-[var(--color-success)]"
+          className="flex items-center gap-2.5 rounded-[var(--radius-md)] border border-[color-mix(in_srgb,var(--color-success)_30%,var(--color-surface))] bg-[color-mix(in_srgb,var(--color-success)_7%,var(--color-surface))] px-4 py-3 text-[0.875rem] text-[var(--color-success)]"
         >
           <IconCheckCircle size={18} />
           {state.message ?? "Änderungen gespeichert."}
@@ -55,7 +55,7 @@ export function PropertyForm({
 
         {/* Basisdaten */}
         <fieldset className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-7">
-          <legend className="px-2 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+          <legend className="eyebrow px-2">
             Basisdaten
           </legend>
           <div className="mt-4 flex flex-col gap-4">
@@ -109,7 +109,7 @@ export function PropertyForm({
 
         {/* Einordnung */}
         <fieldset className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-7">
-          <legend className="px-2 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+          <legend className="eyebrow px-2">
             Einordnung
           </legend>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -174,7 +174,7 @@ export function PropertyForm({
 
         {/* Preis & Flaechen */}
         <fieldset className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-7">
-          <legend className="px-2 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+          <legend className="eyebrow px-2">
             Preis & Flächen
           </legend>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -239,7 +239,7 @@ export function PropertyForm({
 
         {/* Lage */}
         <fieldset className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-7">
-          <legend className="px-2 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+          <legend className="eyebrow px-2">
             Lage
           </legend>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -276,7 +276,7 @@ export function PropertyForm({
 
         {/* Inhalte */}
         <fieldset className="rounded-[var(--radius-lg)] border border-line bg-surface p-6 sm:p-7">
-          <legend className="px-2 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+          <legend className="eyebrow px-2">
             Highlights, Ausstattung & Bilder
           </legend>
           <div className="mt-4 flex flex-col gap-4">
@@ -328,7 +328,7 @@ export function PropertyForm({
       {property ? (
         <form
           action={deletePropertyAction}
-          className="mt-4 flex flex-col gap-3 rounded-[var(--radius-lg)] border border-[color-mix(in_srgb,var(--color-danger)_28%,white)] bg-[color-mix(in_srgb,var(--color-danger)_4%,white)] p-6 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-4 flex flex-col gap-3 rounded-[var(--radius-lg)] border border-[color-mix(in_srgb,var(--color-danger)_28%,var(--color-surface))] bg-[color-mix(in_srgb,var(--color-danger)_4%,var(--color-surface))] p-6 sm:flex-row sm:items-center sm:justify-between"
         >
           <input type="hidden" name="id" value={property.id} />
           <div>
@@ -341,7 +341,7 @@ export function PropertyForm({
           </div>
           <button
             type="submit"
-            className="inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-danger)] px-4 py-2.5 text-[0.875rem] font-medium text-[var(--color-danger)] transition-colors hover:bg-[var(--color-danger)] hover:text-white"
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-[var(--color-danger)] px-6 text-[0.9375rem] font-semibold text-[var(--color-danger)] transition-colors hover:bg-[var(--color-danger)] hover:text-white"
           >
             <IconTrash size={16} />
             Endgültig löschen

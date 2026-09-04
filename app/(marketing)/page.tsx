@@ -107,14 +107,17 @@ export default async function HomePage() {
                 return (
                   <Reveal key={value.title} delay={i * 100}>
                     <div className="flex gap-5 border-b border-line pb-8 last:border-0 last:pb-0">
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-surface text-primary-600 shadow-[var(--shadow-subtle)]">
-                        <Icon size={22} />
+                      <span className="flex flex-col items-center gap-3">
+                        <span className="font-[family-name:var(--font-display)] text-[0.9375rem] leading-none text-accent-500">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-primary-700">
+                          <Icon size={20} />
+                        </span>
                       </span>
-                      <div>
-                        <h3 className="text-[1.125rem] font-medium text-primary-950">
-                          {value.title}
-                        </h3>
-                        <p className="mt-2 max-w-lg text-[0.9375rem] leading-relaxed text-ink-muted">
+                      <div className="pt-1">
+                        <h3 className="heading-4 text-primary-950">{value.title}</h3>
+                        <p className="mt-2.5 max-w-lg text-[0.9375rem] leading-relaxed text-ink-muted">
                           {value.text}
                         </p>
                       </div>
@@ -163,7 +166,11 @@ export default async function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="Erfahrungen unserer Kunden"
-              title="Was Eigentümer über uns sagen"
+              title={
+                <>
+                  Was Eigentümer <em>über uns</em> sagen
+                </>
+              }
               description={
                 <span className="flex flex-wrap items-center gap-3">
                   <RatingStars rating={summary.average} size={18} />
@@ -215,7 +222,7 @@ export default async function HomePage() {
                 <article className="group flex h-full flex-col">
                   <Link
                     href={`/ratgeber/${post.slug}`}
-                    className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] bg-surface-sunken"
+                    className="relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-sm)] border border-line bg-surface-sunken"
                   >
                     {post.coverImage ? (
                       <Image
@@ -227,12 +234,15 @@ export default async function HomePage() {
                       />
                     ) : null}
                   </Link>
-                  <div className="mt-5 flex flex-1 flex-col">
-                    <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary-500">
+                  <div className="mt-5 flex flex-1 flex-col border-t border-line pt-4">
+                    <p className="eyebrow !text-[0.6875rem] !tracking-[0.14em] [&::before]:w-4">
                       {post.category?.name ?? "Ratgeber"}
                     </p>
-                    <h3 className="heading-4 mt-2.5 leading-snug text-primary-950">
-                      <Link href={`/ratgeber/${post.slug}`} className="hover:text-primary-700">
+                    <h3 className="heading-4 mt-3 text-primary-950">
+                      <Link
+                        href={`/ratgeber/${post.slug}`}
+                        className="decoration-accent-500 decoration-1 underline-offset-4 hover:underline"
+                      >
                         {post.title}
                       </Link>
                     </h3>

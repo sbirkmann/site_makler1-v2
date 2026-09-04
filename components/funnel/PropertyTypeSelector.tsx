@@ -52,29 +52,28 @@ export function PropertyTypeSelector({
             onClick={() => onChange(v)}
             aria-pressed={selected}
             className={cn(
-              "group relative flex items-start gap-4 rounded-[var(--radius-lg)] border p-5 text-left transition-all duration-200",
-              "hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]",
+              "group relative flex items-start gap-4 rounded-none border p-5 text-left transition-colors duration-200",
               selected
-                ? "border-primary-700 bg-primary-50/60 shadow-[var(--shadow-card)]"
-                : "border-line-strong bg-surface hover:border-primary-300",
+                ? "border-primary-900 bg-primary-50"
+                : "border-line-strong bg-surface hover:border-primary-600",
             )}
           >
             <span
               className={cn(
-                "flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] transition-colors",
-                selected ? "bg-primary-800 text-white" : "bg-surface-sunken text-primary-700",
+                "flex h-12 w-12 shrink-0 items-center justify-center rounded-none border transition-colors",
+                selected ? "border-primary-900 bg-primary-900 text-ink-inverse" : "border-line bg-surface-muted text-primary-700",
               )}
             >
               <Icon size={24} />
             </span>
             <span className="flex min-w-0 flex-col gap-1 pt-0.5 pr-6">
-              <span className="font-medium text-primary-950">{label}</span>
+              <span className="font-[family-name:var(--font-display)] text-[1.0625rem] font-medium text-primary-950">{label}</span>
               <span className="text-[0.8125rem] leading-relaxed text-ink-subtle">{hint}</span>
             </span>
             <span
               className={cn(
-                "absolute right-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border transition-all",
-                selected ? "border-primary-800 bg-primary-800 text-white" : "border-line-strong",
+                "absolute right-4 top-4 flex h-5 w-5 items-center justify-center rounded-none border transition-colors",
+                selected ? "border-accent-500 bg-accent-500 text-ink" : "border-line-strong",
               )}
             >
               <IconCheck

@@ -3,6 +3,7 @@ import { getSession } from "@/lib/services/auth";
 import { findOpeningHoursForAdmin } from "@/lib/repositories/settings";
 import { site } from "@/lib/site";
 import { resetOpeningHoursAction, saveOpeningHoursAction } from "@/lib/actions/admin";
+import { Button } from "@/components/ui/Button";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +19,7 @@ export default async function OpeningHoursPage() {
   const usesDefaults = rows.length === 0;
 
   const input =
-    "w-full rounded-[var(--radius-sm)] border border-line-strong bg-surface px-3 py-2 text-[0.875rem] text-primary-950";
+    "w-full rounded-[var(--radius-md)] border border-line-strong bg-surface px-3.5 py-2.5 text-[0.9375rem] text-ink placeholder:text-ink-subtle transition-colors focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600/15";
 
   // Ist noch nichts gepflegt, die Vorgabe als Startbelegung anzeigen.
   const initial = usesDefaults
@@ -53,7 +54,7 @@ export default async function OpeningHoursPage() {
       ) : null}
 
       <form action={saveOpeningHoursAction} className="flex flex-col gap-4">
-        <div className="hidden gap-3 px-1 text-[0.75rem] font-medium uppercase tracking-[0.08em] text-ink-subtle sm:grid sm:grid-cols-[1fr_1fr_auto]">
+        <div className="hidden gap-3 border-b border-line px-1 pb-2 text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-ink-subtle sm:grid sm:grid-cols-[1fr_1fr_auto]">
           <span>Tag / Zeitraum</span>
           <span>Zeiten</span>
           <span>Geschlossen</span>
@@ -87,16 +88,14 @@ export default async function OpeningHoursPage() {
               />
             </label>
             <label className="flex items-center gap-2 text-[0.8125rem] text-ink-muted sm:justify-center">
-              <input type="checkbox" name={`closed-${index}`} defaultChecked={row.closed} />
+              <input type="checkbox" name={`closed-${index}`} defaultChecked={row.closed} className="accent-primary-800" />
               <span className="sm:sr-only">Geschlossen</span>
             </label>
           </div>
         ))}
 
         <div className="flex flex-wrap items-center gap-3 border-t border-line pt-5">
-          <button className="rounded-[var(--radius-sm)] bg-primary-800 px-4 py-2 text-sm font-medium text-white">
-            Öffnungszeiten speichern
-          </button>
+          <Button type="submit">Öffnungszeiten speichern</Button>
           <span className="text-[0.8125rem] text-ink-subtle">
             Zum Entfernen einer Zeile beide Felder leeren.
           </span>
@@ -105,7 +104,7 @@ export default async function OpeningHoursPage() {
 
       {!usesDefaults ? (
         <form action={resetOpeningHoursAction} className="border-t border-line pt-5">
-          <button className="text-[0.875rem] text-red-700 underline-offset-4 hover:underline">
+          <button className="text-[0.875rem] text-[var(--color-danger)] underline decoration-1 underline-offset-4 hover:decoration-2">
             Auf Vorgabe zurücksetzen
           </button>
         </form>

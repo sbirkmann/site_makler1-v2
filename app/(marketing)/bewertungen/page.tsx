@@ -35,7 +35,7 @@ export default async function ReviewsPage() {
           <Reveal>
             <span className="eyebrow">Erfahrungen unserer Kunden</span>
             <h1 className="page-title mt-4 max-w-3xl text-balance text-primary-950">
-              Was Eigentümer über uns sagen
+              Was Eigentümer <em className="font-normal italic text-accent-500">über uns</em> sagen
             </h1>
             <p className="lead mt-5 max-w-2xl">
               Jede Bewertung stammt von einer Person, die wir tatsächlich begleitet haben –
@@ -67,8 +67,8 @@ export default async function ReviewsPage() {
           </div>
 
           {/* Transparenzhinweis: Demo-Daten klar kennzeichnen */}
-          <p className="mt-12 flex items-start gap-3 rounded-[var(--radius-md)] border border-line bg-surface-muted px-5 py-4 text-[0.8125rem] leading-relaxed text-ink-muted">
-            <IconInfo size={17} className="mt-0.5 shrink-0 text-primary-500" />
+          <p className="mt-12 flex items-start gap-3 rounded-[var(--radius-sm)] border border-line border-l-2 border-l-accent-500 bg-surface-muted px-5 py-4 text-[0.8125rem] leading-relaxed text-ink-muted">
+            <IconInfo size={17} className="mt-0.5 shrink-0 text-primary-700" />
             <span>
               <strong className="font-medium text-primary-900">Hinweis zu diesem Musterprojekt:</strong>{" "}
               Die hier gezeigten Bewertungen sind Beispieldaten und dienen ausschließlich der

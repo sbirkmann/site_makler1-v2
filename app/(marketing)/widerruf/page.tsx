@@ -13,10 +13,11 @@ export default function WiderrufPage() {
   return (
     <Section>
       <Container size="narrow">
+        <span aria-hidden="true" className="mb-5 block h-px w-8 bg-accent-500" />
         <h1 className="page-title text-primary-950">Widerrufsbelehrung</h1>
 
-        <div className="prose-editorial mt-8">
-          <p className="rounded-[var(--radius-md)] border border-line bg-surface-muted px-5 py-4 text-[0.9375rem]">
+        <div className="prose-editorial mt-8 border-t border-line pt-8">
+          <p className="rounded-[var(--radius-sm)] border border-line border-l-2 border-l-accent-500 bg-surface-muted px-5 py-4 text-[0.9375rem]">
             <strong>Hinweis:</strong> Muster für ein Demonstrationsprojekt. Vor produktivem Einsatz
             rechtlich prüfen lassen.
           </p>
