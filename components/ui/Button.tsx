@@ -5,31 +5,35 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "secondary" | "outline" | "ghost" | "accent" | "inverse";
 type Size = "sm" | "md" | "lg";
 
+/**
+ * Buttons v2: Pillenform, ruhige Grotesk, keine Schatten.
+ * Der Kontrast entsteht ueber Flaeche (Gruen / Gold) statt ueber Tiefe.
+ */
 const base =
-  "inline-flex items-center justify-center gap-2 font-medium tracking-[-0.005em] " +
-  "transition-all duration-200 ease-out select-none " +
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[0.005em] " +
+  "transition-[background-color,color,border-color,transform] duration-200 ease-out select-none " +
   "disabled:opacity-50 disabled:pointer-events-none " +
   "focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-primary-800 text-white shadow-[var(--shadow-subtle)] hover:bg-primary-900 hover:shadow-[var(--shadow-card)] active:translate-y-px focus-visible:outline-primary-800",
+    "bg-primary-900 text-ink-inverse hover:bg-primary-700 active:translate-y-px focus-visible:outline-primary-800",
   secondary:
-    "bg-surface-sunken text-primary-900 hover:bg-line-strong/60 active:translate-y-px focus-visible:outline-primary-600",
+    "bg-secondary-100 text-primary-900 hover:bg-secondary-200 active:translate-y-px focus-visible:outline-primary-600",
   outline:
-    "border border-line-strong bg-transparent text-primary-900 hover:border-primary-700 hover:bg-primary-50/60 active:translate-y-px focus-visible:outline-primary-600",
+    "border border-line-strong bg-transparent text-primary-900 hover:border-primary-900 hover:bg-primary-900 hover:text-ink-inverse active:translate-y-px focus-visible:outline-primary-600",
   ghost:
-    "bg-transparent text-primary-800 hover:bg-primary-50 active:translate-y-px focus-visible:outline-primary-600",
+    "bg-transparent text-primary-900 underline decoration-accent-500 decoration-1 underline-offset-[6px] hover:decoration-2 focus-visible:outline-primary-600",
   accent:
-    "bg-accent-400 text-ink shadow-[var(--shadow-subtle)] hover:bg-accent-500 hover:shadow-[var(--shadow-card)] active:translate-y-px focus-visible:outline-accent-600",
+    "bg-accent-400 text-ink hover:bg-accent-300 active:translate-y-px focus-visible:outline-accent-600",
   inverse:
-    "bg-white text-primary-900 shadow-[var(--shadow-subtle)] hover:bg-secondary-50 active:translate-y-px focus-visible:outline-white",
+    "bg-surface text-primary-900 hover:bg-accent-200 active:translate-y-px focus-visible:outline-white",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-9 rounded-[var(--radius-sm)] px-3.5 text-[0.8125rem]",
-  md: "h-11 rounded-[var(--radius-md)] px-5 text-[0.9375rem]",
-  lg: "h-[3.25rem] rounded-[var(--radius-md)] px-7 text-base",
+  sm: "h-9 px-4 text-[0.8125rem]",
+  md: "h-11 px-6 text-[0.9375rem]",
+  lg: "h-[3.25rem] px-8 text-base",
 };
 
 export interface ButtonBaseProps {

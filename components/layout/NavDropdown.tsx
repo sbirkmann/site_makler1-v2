@@ -72,7 +72,7 @@ export function NavDropdown({
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative flex items-center gap-1.5 rounded-[var(--radius-sm)] px-4 py-3 text-[1.125rem] font-medium transition-colors",
+          "relative flex items-center gap-1.5 px-4 py-3 text-[0.9375rem] font-medium transition-colors",
           onImage
             ? active || open
               ? "text-white"
@@ -93,15 +93,15 @@ export function NavDropdown({
         id={panelId}
         hidden={!open}
         className={cn(
-          "absolute left-0 top-[calc(100%+0.5rem)] z-50 w-[33rem]",
-          "rounded-b-[1.25rem] rounded-tr-[1.25rem] bg-surface px-8 py-7",
-          "shadow-[0_2px_4px_rgba(0,0,0,0.1),0_18px_44px_-20px_rgba(16,31,54,0.35)]",
+          "absolute left-0 top-[calc(100%+0.25rem)] z-50 w-[33rem]",
+          "rounded-[var(--radius-lg)] border border-line-strong bg-surface px-8 py-7",
+          "shadow-[var(--shadow-lift)]",
         )}
       >
         <div className="grid grid-cols-2 gap-x-8 gap-y-6">
           {item.groups?.map((group) => (
             <div key={group.title}>
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink-subtle">
+              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-accent-600">
                 {group.title}
               </p>
               <ul className="mt-3 flex flex-col gap-1">
@@ -109,7 +109,7 @@ export function NavDropdown({
                   <li key={sub.href}>
                     <Link
                       href={sub.href}
-                      className="-mx-2 block rounded-[var(--radius-sm)] px-2 py-1.5 text-[1rem] text-primary-950 transition-colors hover:bg-surface-muted hover:text-primary-700"
+                      className="-mx-2 block rounded-[var(--radius-sm)] px-2 py-1.5 text-[0.9375rem] text-primary-950 transition-colors hover:bg-surface-muted hover:text-primary-700"
                     >
                       {sub.label}
                     </Link>
@@ -123,10 +123,10 @@ export function NavDropdown({
         {item.teaser ? (
           <Link
             href={item.teaser.href}
-            className="group mt-7 flex items-start gap-4 rounded-[1rem] bg-primary-950 p-5 text-white transition-colors hover:bg-primary-900"
+            className="group mt-7 flex items-start gap-4 rounded-[var(--radius-md)] bg-primary-950 p-5 text-white transition-colors hover:bg-primary-800"
           >
             <span className="flex-1">
-              <span className="block text-[1rem] font-medium">{item.teaser.title}</span>
+              <span className="block font-[family-name:var(--font-display)] text-[1.125rem] font-medium">{item.teaser.title}</span>
               <span className="mt-1 block text-[0.875rem] font-light leading-relaxed text-white/70">
                 {item.teaser.text}
               </span>

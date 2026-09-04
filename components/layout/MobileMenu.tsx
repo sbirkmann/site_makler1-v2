@@ -37,7 +37,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
   return (
     <div
       className={cn(
-        "fixed inset-0 z-100 lg:hidden",
+        "fixed inset-0 z-100 xl:hidden",
         open ? "pointer-events-auto" : "pointer-events-none",
       )}
       aria-hidden={!open}
@@ -55,7 +55,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         aria-label="Hauptmenü"
         className={cn(
           "absolute inset-x-0 top-0 flex max-h-[100dvh] flex-col overflow-y-auto bg-surface",
-          "rounded-b-[var(--radius-2xl)] shadow-[var(--shadow-float)]",
+          "border-b border-line-strong shadow-[var(--shadow-float)]",
           "transition-transform duration-400 [transition-timing-function:var(--ease-out-quint)]",
           open ? "translate-y-0" : "-translate-y-full",
         )}
@@ -89,7 +89,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                 <span className="flex flex-col gap-0.5">
                   <span
                     className={cn(
-                      "text-[1.0625rem] font-medium",
+                      "font-[family-name:var(--font-display)] text-[1.375rem] font-medium",
                       active ? "text-primary-700" : "text-primary-950",
                     )}
                   >
@@ -116,13 +116,13 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           <div className="mt-1 grid grid-cols-2 gap-3">
             <a
               href={site.contact.phoneHref}
-              className="flex items-center justify-center gap-2 rounded-[var(--radius-md)] border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
+              className="flex items-center justify-center gap-2 rounded-full border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
             >
               <IconPhone size={16} /> Anrufen
             </a>
             <a
               href={`mailto:${site.contact.email}`}
-              className="flex items-center justify-center gap-2 rounded-[var(--radius-md)] border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
+              className="flex items-center justify-center gap-2 rounded-full border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
             >
               <IconMail size={16} /> E-Mail
             </a>

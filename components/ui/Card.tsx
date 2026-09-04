@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+/** Karten v2: Hairline statt Schatten, knappe Radien, Elfenbein-Flaeche. */
 export function Card({
   children,
   className,
@@ -13,7 +14,7 @@ export function Card({
   return (
     <Tag
       className={cn(
-        "rounded-[var(--radius-lg)] border border-line bg-surface shadow-[var(--shadow-subtle)]",
+        "rounded-[var(--radius-lg)] border border-line bg-surface",
         className,
       )}
     >

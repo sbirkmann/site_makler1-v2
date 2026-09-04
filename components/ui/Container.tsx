@@ -13,11 +13,9 @@ export function Container({
   return (
     <div
       className={cn(
-        // Wie in der Referenz gemessen: 1552 px Maximalbreite bei nur
-        // 16 px Innenabstand – der Inhalt laeuft dadurch sehr weit nach aussen.
-        "mx-auto w-full px-4",
-        size === "wide" && "max-w-[1552px]",
-        size === "default" && "max-w-[1552px]",
+        "mx-auto w-full px-5 sm:px-8 lg:px-12",
+        size === "wide" && "max-w-[1600px]",
+        size === "default" && "max-w-[1440px]",
         size === "narrow" && "max-w-[68rem]",
         className,
       )}
@@ -27,6 +25,10 @@ export function Container({
   );
 }
 
+/**
+ * Abschnitte v2: Flaechen wechseln zwischen Elfenbein und warmem Grau,
+ * getrennt durch Hairlines statt durch Schatten oder Radien.
+ */
 export function Section({
   children,
   className,
@@ -42,13 +44,11 @@ export function Section({
     <section
       id={id}
       className={cn(
-        // Vertikaler Rhythmus exakt wie in der Referenz: 80 px oben und unten
-        "py-12 sm:py-16 lg:py-20",
-        // Abwechselnde Flaechen: "default" ist weiss, "muted" das warme Grau
+        "border-t border-line py-14 sm:py-18 lg:py-22",
         tone === "default" && "bg-surface",
         tone === "muted" && "bg-surface-muted",
         tone === "sunken" && "bg-surface-sunken",
-        tone === "dark" && "bg-primary-950 text-ink-inverse",
+        tone === "dark" && "border-primary-800 bg-primary-950 text-ink-inverse",
         className,
       )}
     >

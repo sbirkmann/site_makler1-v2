@@ -72,7 +72,7 @@ export function PropertySearch({
     <div className={cn("mx-auto w-full max-w-[1210px]", className)}>
       <form
         onSubmit={submit}
-        className="rounded-[1rem] bg-surface p-1"
+        className="rounded-[var(--radius-lg)] border border-line-strong bg-surface p-1.5 shadow-[var(--shadow-lift)]"
       >
         <div className="flex flex-col lg:h-12 lg:flex-row lg:items-stretch">
           {/* Umschalter */}
@@ -91,10 +91,10 @@ export function PropertySearch({
                   aria-selected={active}
                   onClick={() => setTab(t.id)}
                   className={cn(
-                    "flex-1 rounded-[0.75rem] px-5 text-[1rem] transition-colors lg:flex-none lg:py-0",
+                    "flex-1 rounded-full px-5 text-[0.9375rem] font-medium transition-colors lg:flex-none lg:py-0",
                     "py-2.5 lg:leading-[3rem]",
                     active
-                      ? "bg-accent-400 text-ink"
+                      ? "bg-primary-900 text-ink-inverse"
                       : "text-ink-muted hover:bg-surface-muted hover:text-primary-900",
                   )}
                 >
@@ -163,7 +163,7 @@ export function PropertySearch({
               type="submit"
               disabled={pending}
               aria-label="Immobilien suchen"
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-[0.75rem] bg-accent-400 text-white transition-colors hover:bg-accent-500 disabled:opacity-60 lg:aspect-square lg:h-12 lg:w-auto lg:px-0"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent-400 text-ink transition-colors hover:bg-accent-300 disabled:opacity-60 lg:aspect-square lg:h-12 lg:w-auto lg:px-0"
             >
               <IconSearch size={20} />
               <span className="lg:sr-only">
@@ -225,16 +225,16 @@ export function PropertySearch({
       {/* Eigentuemer-Teaser direkt unter der Suche */}
       <Link
         href="/immobilie-verkaufen"
-        className="group mx-3 flex items-center gap-3 rounded-b-[0.75rem] bg-black/10 px-4 py-4 text-[0.875rem] text-white backdrop-blur-lg transition-colors hover:bg-black/20 sm:mx-8 lg:mx-[51px]"
+        className="group mx-4 flex items-center gap-3 border-b border-line px-1 py-4 text-[0.875rem] text-ink-muted transition-colors hover:text-primary-900 sm:mx-8"
       >
-        <IconValuation size={19} className="shrink-0 text-white/80" />
+        <IconValuation size={19} className="shrink-0 text-accent-600" />
         <span className="flex-1 leading-snug">
-          <strong className="font-medium">Sie sind Eigentümer?</strong> Kostenlose
+          <strong className="font-semibold text-primary-950">Sie sind Eigentümer?</strong> Kostenlose
           Immobilienbewertung, Marktbericht und Verkaufsberatung.
         </span>
         <IconChevronRight
           size={18}
-          className="shrink-0 text-white/70 transition-transform group-hover:translate-x-0.5"
+          className="shrink-0 text-ink-subtle transition-transform group-hover:translate-x-0.5"
         />
       </Link>
     </div>

@@ -5,6 +5,10 @@ import { Logo } from "@/components/layout/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconArrowRight, IconLocation, IconMail, IconPhone } from "@/components/icons";
 
+/**
+ * Footer v2: dunkles Waldgruen, grosser Serifen-Aufruf mit kursivem Akzent,
+ * darunter ein vierspaltiges Verzeichnis mit Hairlines.
+ */
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -12,18 +16,19 @@ export function Footer() {
     <footer className="bg-primary-950 text-ink-inverse">
       {/* Abschliessender Conversion-Block */}
       <div className="border-b border-white/10">
-        <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-5 py-14 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-18">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-10 px-5 py-16 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-12 lg:py-22">
           <div className="max-w-2xl">
-            <h2 className="display-3 text-white">
-              Sprechen wir über Ihre Immobilie.
+            <span className="eyebrow !text-accent-300">Nächster Schritt</span>
+            <h2 className="display-1 mt-5 text-white">
+              Sprechen wir <em className="!text-accent-300">über Ihre Immobilie.</em>
             </h2>
-            <p className="mt-4 max-w-lg text-[1.0625rem] leading-relaxed text-white/65">
+            <p className="mt-6 max-w-lg text-[1.0625rem] leading-relaxed text-white/65">
               Ob Verkauf, Kauf oder einfach eine Einschätzung: Das erste Gespräch ist
               unverbindlich und kostet Sie nichts außer zwanzig Minuten.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:shrink-0">
-            <ButtonLink href="/kontakt" size="lg" variant="inverse">
+            <ButtonLink href="/kontakt" size="lg" variant="accent">
               Beratung vereinbaren
               <IconArrowRight size={18} />
             </ButtonLink>
@@ -31,7 +36,7 @@ export function Footer() {
               href={site.contact.phoneHref}
               size="lg"
               variant="outline"
-              className="border-white/25 text-white hover:border-white/50 hover:bg-white/5"
+              className="border-white/25 text-white hover:border-white hover:bg-white hover:text-primary-950"
             >
               <IconPhone size={18} />
               {site.contact.phone}
@@ -40,8 +45,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-[1600px] gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-12">
-        <div className="flex flex-col gap-6">
+      <div className="mx-auto grid max-w-[1600px] gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-8 lg:px-12">
+        <div className="flex flex-col gap-6 lg:pr-12">
           <Logo tone="light" />
           <p className="max-w-sm text-[0.9375rem] leading-relaxed text-white/60">
             {site.description}
@@ -73,8 +78,12 @@ export function Footer() {
         </div>
 
         {Object.values(footerNav).map((group) => (
-          <nav key={group.title} aria-label={group.title} className="flex flex-col gap-4">
-            <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-accent-300">
+          <nav
+            key={group.title}
+            aria-label={group.title}
+            className="flex flex-col gap-4 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
+          >
+            <h3 className="font-[family-name:var(--font-display)] text-[1.125rem] font-medium text-white">
               {group.title}
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -82,7 +91,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[0.9375rem] text-white/65 transition-colors hover:text-white"
+                    className="text-[0.9375rem] text-white/60 transition-colors hover:text-accent-300"
                   >
                     {item.label}
                   </Link>
