@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Lato } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const manrope = Manrope({
+const lato = Lato({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
+  weight: ["300", "400", "700"],
 });
 
-const fraunces = Fraunces({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-display-serif",
   display: "swap",
-  axes: ["opsz", "SOFT"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
@@ -48,14 +49,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f1f18",
+  themeColor: "#3f3f40",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${manrope.variable} ${fraunces.variable}`}>
+    <html lang="de" className={`${lato.variable} ${cormorant.variable}`}>
       <body>{children}</body>
     </html>
   );

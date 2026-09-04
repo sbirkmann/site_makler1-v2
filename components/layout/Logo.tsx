@@ -3,72 +3,74 @@ import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
 /**
- * Wortmarke v2: Serifen-Schriftzug mit einem Monogramm-Siegel –
- * ein Kreis mit dem Anfangsbuchstaben und einer goldenen Grundlinie,
- * die den Boden unter dem Haus andeutet.
+ * Wortmarke: Serifen-Versalien mit weiter Sperrung, darueber ein feines
+ * Linien-Haus. `stacked` (Header-Mitte) setzt das Zeichen ueber den Namen,
+ * sonst steht es links daneben.
  */
 export function Logo({
   className,
   tone = "dark",
   href = "/",
+  stacked = false,
 }: {
   className?: string;
   tone?: "dark" | "light";
   href?: string | null;
+  stacked?: boolean;
 }) {
-  const initial = site.name.charAt(0);
+  const stroke = tone === "light" ? "#ffffff" : "var(--color-accent-500)";
+  const mark = (
+    <svg
+      viewBox="0 0 48 32"
+      fill="none"
+      aria-hidden="true"
+      className={cn("shrink-0", stacked ? "h-7 w-11" : "h-6 w-9")}
+      stroke={stroke}
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 15 24 3l20 12" />
+      <path d="M9 13.5V30h30V13.5" />
+      <path d="M19 30V20h10v10" />
+      <path d="M14 18h3M31 18h3" />
+      <path d="M33 6v-3h3v5" />
+    </svg>
+  );
+
   const content = (
-    <span className={cn("inline-flex min-w-0 items-center gap-3", className)}>
-      <svg
-        width="44"
-        height="44"
-        viewBox="0 0 44 44"
-        fill="none"
-        aria-hidden="true"
-        className="h-10 w-10 shrink-0 sm:h-11 sm:w-11"
+    <span
+      className={cn(
+        "inline-flex min-w-0",
+        stacked ? "flex-col items-center gap-1.5" : "items-center gap-3",
+        className,
+      )}
+    >
+      {mark}
+      <span
+        className={cn(
+          "flex min-w-0 leading-none",
+          stacked ? "flex-col items-center" : "flex-col",
+        )}
       >
-        <circle
-          cx="22"
-          cy="22"
-          r="21"
-          className={tone === "light" ? "stroke-white/40" : "stroke-primary-900"}
-          strokeWidth="1.25"
-        />
-        <text
-          x="22"
-          y="27.5"
-          textAnchor="middle"
-          fontFamily="var(--font-display)"
-          fontStyle="italic"
-          fontWeight="500"
-          fontSize="22"
-          className={tone === "light" ? "fill-white" : "fill-primary-900"}
-        >
-          {initial}
-        </text>
-        <path
-          d="M13 33.5h18"
-          stroke="var(--color-accent-500)"
-          strokeWidth="1.75"
-          strokeLinecap="round"
-        />
-      </svg>
-      <span className="flex min-w-0 flex-col leading-none">
         <span
           className={cn(
-            "truncate font-[family-name:var(--font-display)] text-[1.25rem] font-medium tracking-[-0.01em] sm:text-[1.5rem]",
-            tone === "light" ? "text-white" : "text-primary-950",
+            "truncate font-[family-name:var(--font-display)] font-medium uppercase",
+            stacked
+              ? "text-[1.5rem] tracking-[0.32em] sm:text-[1.75rem]"
+              : "text-[1.125rem] tracking-[0.28em] sm:text-[1.375rem]",
+            tone === "light" ? "text-white" : "text-accent-500",
           )}
         >
-          {site.name}
+          {site.shortName}
         </span>
         <span
           className={cn(
-            "mt-1 hidden truncate text-[0.6875rem] font-semibold uppercase tracking-[0.18em] sm:block",
-            tone === "light" ? "text-white/55" : "text-accent-600",
+            "mt-1.5 hidden truncate text-[0.5625rem] font-normal uppercase tracking-[0.3em] sm:block",
+            tone === "light" ? "text-white/70" : "text-ink-subtle",
           )}
         >
-          {site.claim}
+          Immobilien
         </span>
       </span>
     </span>
@@ -77,11 +79,7 @@ export function Logo({
   if (!href) return content;
 
   return (
-    <Link
-      href={href}
-      aria-label={`${site.name} – Startseite`}
-      className={cn("min-w-0 max-w-full rounded-[var(--radius-sm)]", className)}
-    >
+    <Link href={href} aria-label={`${site.name} – Startseite`} className={cn("min-w-0 max-w-full", className)}>
       {content}
     </Link>
   );

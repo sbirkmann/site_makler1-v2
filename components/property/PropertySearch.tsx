@@ -72,7 +72,7 @@ export function PropertySearch({
     <div className={cn("mx-auto w-full max-w-[1210px]", className)}>
       <form
         onSubmit={submit}
-        className="rounded-[var(--radius-lg)] border border-line-strong bg-surface p-1.5 shadow-[var(--shadow-lift)]"
+        className="bg-surface p-1.5 shadow-[var(--shadow-lift)]"
       >
         <div className="flex flex-col lg:h-12 lg:flex-row lg:items-stretch">
           {/* Umschalter */}
@@ -91,11 +91,11 @@ export function PropertySearch({
                   aria-selected={active}
                   onClick={() => setTab(t.id)}
                   className={cn(
-                    "flex-1 rounded-full px-5 text-[0.9375rem] font-medium transition-colors lg:flex-none lg:py-0",
+                    "flex-1 px-5 text-[0.8125rem] uppercase tracking-[0.1em] transition-colors lg:flex-none lg:py-0",
                     "py-2.5 lg:leading-[3rem]",
                     active
-                      ? "bg-primary-900 text-ink-inverse"
-                      : "text-ink-muted hover:bg-surface-muted hover:text-primary-900",
+                      ? "bg-accent-500 text-white"
+                      : "text-ink-muted hover:bg-surface-muted hover:text-accent-600",
                   )}
                 >
                   {t.label}
@@ -163,7 +163,7 @@ export function PropertySearch({
               type="submit"
               disabled={pending}
               aria-label="Immobilien suchen"
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent-400 text-ink transition-colors hover:bg-accent-300 disabled:opacity-60 lg:aspect-square lg:h-12 lg:w-auto lg:px-0"
+              className="flex h-12 w-full items-center justify-center gap-2 bg-primary-900 text-white transition-colors hover:bg-primary-950 disabled:opacity-60 lg:aspect-square lg:h-12 lg:w-auto lg:px-0"
             >
               <IconSearch size={20} />
               <span className="lg:sr-only">
@@ -225,11 +225,11 @@ export function PropertySearch({
       {/* Eigentuemer-Teaser direkt unter der Suche */}
       <Link
         href="/immobilie-verkaufen"
-        className="group mx-4 flex items-center gap-3 border-b border-line px-1 py-4 text-[0.875rem] text-ink-muted transition-colors hover:text-primary-900 sm:mx-8"
+        className="group mx-auto flex max-w-3xl items-center justify-center gap-3 px-1 py-5 text-[0.875rem] font-light text-ink-muted transition-colors hover:text-accent-600"
       >
-        <IconValuation size={19} className="shrink-0 text-accent-600" />
+        <IconValuation size={19} className="shrink-0 text-accent-500" />
         <span className="flex-1 leading-snug">
-          <strong className="font-semibold text-primary-950">Sie sind Eigentümer?</strong> Kostenlose
+          <strong className="font-normal text-ink">Sie sind Eigentümer?</strong> Kostenlose
           Immobilienbewertung, Marktbericht und Verkaufsberatung.
         </span>
         <IconChevronRight

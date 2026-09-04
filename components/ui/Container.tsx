@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Breiten nach Referenz (gemessen bei 1920 px):
+ * wide 1550 px, default 1200 px, narrow 965 px.
+ */
 export function Container({
   children,
   className,
@@ -13,10 +17,10 @@ export function Container({
   return (
     <div
       className={cn(
-        "mx-auto w-full px-5 sm:px-8 lg:px-12",
-        size === "wide" && "max-w-[1600px]",
-        size === "default" && "max-w-[1440px]",
-        size === "narrow" && "max-w-[68rem]",
+        "mx-auto w-full px-5 sm:px-8 lg:px-10",
+        size === "wide" && "max-w-[1630px]",
+        size === "default" && "max-w-[1280px]",
+        size === "narrow" && "max-w-[1045px]",
         className,
       )}
     >
@@ -25,10 +29,7 @@ export function Container({
   );
 }
 
-/**
- * Abschnitte v2: Flaechen wechseln zwischen Elfenbein und warmem Grau,
- * getrennt durch Hairlines statt durch Schatten oder Radien.
- */
+/** Abschnitte: 80 px Rhythmus, Weiss und helles Grau im Wechsel, keine Linien. */
 export function Section({
   children,
   className,
@@ -44,11 +45,11 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "border-t border-line py-14 sm:py-18 lg:py-22",
+        "py-14 sm:py-16 lg:py-20",
         tone === "default" && "bg-surface",
         tone === "muted" && "bg-surface-muted",
         tone === "sunken" && "bg-surface-sunken",
-        tone === "dark" && "border-primary-800 bg-primary-950 text-ink-inverse",
+        tone === "dark" && "bg-primary-900 text-ink-inverse",
         className,
       )}
     >

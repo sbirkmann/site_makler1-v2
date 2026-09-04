@@ -66,7 +66,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             type="button"
             onClick={onClose}
             aria-label="Menü schließen"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong text-ink-muted transition-colors hover:border-primary-400 hover:text-primary-800"
+            className="flex h-10 w-10 items-center justify-center border border-line-strong text-ink-muted transition-colors hover:border-accent-500 hover:text-accent-600"
           >
             <IconClose size={19} />
           </button>
@@ -89,8 +89,8 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                 <span className="flex flex-col gap-0.5">
                   <span
                     className={cn(
-                      "font-[family-name:var(--font-display)] text-[1.375rem] font-medium",
-                      active ? "text-primary-700" : "text-primary-950",
+                      "text-[1.25rem] font-light",
+                      active ? "text-accent-600" : "text-ink",
                     )}
                   >
                     {item.label}
@@ -116,13 +116,13 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           <div className="mt-1 grid grid-cols-2 gap-3">
             <a
               href={site.contact.phoneHref}
-              className="flex items-center justify-center gap-2 rounded-full border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
+              className="flex items-center justify-center gap-2 border border-line-strong bg-surface py-3 text-[0.75rem] uppercase tracking-[0.1em] text-ink"
             >
               <IconPhone size={16} /> Anrufen
             </a>
             <a
               href={`mailto:${site.contact.email}`}
-              className="flex items-center justify-center gap-2 rounded-full border border-line-strong bg-surface py-3 text-[0.8125rem] font-medium text-primary-900"
+              className="flex items-center justify-center gap-2 border border-line-strong bg-surface py-3 text-[0.75rem] uppercase tracking-[0.1em] text-ink"
             >
               <IconMail size={16} /> E-Mail
             </a>
