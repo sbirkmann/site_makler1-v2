@@ -50,7 +50,7 @@ services:
     volumes: ["ftp-imports:/imports", "uploads:/uploads"]
     # Der Importer traegt beim Start zuerst fehlende Koordinaten nach und
     # geht danach in die Dauerschleife des OpenImmo-Workers.
-    command: ["sh", "-c", "pnpm prisma db execute --file prisma/ensure-migrations-table.sql && pnpm prisma migrate deploy && pnpm geocode:backfill && pnpm import:openimmo"]
+    command: ["sh", "-c", "pnpm prisma db execute --schema prisma/schema.prisma --file prisma/ensure-migrations-table.sql && pnpm prisma migrate deploy && pnpm geocode:backfill && pnpm import:openimmo"]
     networks: [default, coolify]
 volumes:
   ftp-imports: {}
